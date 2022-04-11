@@ -1,5 +1,6 @@
 package com.sparta.sc.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Wind{
@@ -10,6 +11,10 @@ public class Wind{
 	@JsonProperty("speed")
 	private double speed;
 
+	@JsonIgnore
+	@JsonProperty("gust")
+	private double gust;
+
 	public int getDeg(){
 		return deg;
 	}
@@ -17,4 +22,10 @@ public class Wind{
 	public double getSpeed(){
 		return speed;
 	}
+
+	public double getGust() {
+		return gust;
+	}
+
+
 }
