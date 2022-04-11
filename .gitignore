@@ -1,6 +1,7 @@
 # Compiled class file
 *.class
-myJdbc.properties
+
+# Properties file
 api.properties
 
 # Log file
