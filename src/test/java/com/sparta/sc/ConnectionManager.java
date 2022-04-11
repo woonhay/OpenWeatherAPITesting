@@ -5,28 +5,58 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
+import java.util.Map;
 
 public class ConnectionManager {
-    private static final String BASEURL = "https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=97c6edb288230b9ed8dcbd4680220d4f";
 
-    public static String getConnection() {
-        getResponse();
-        return BASEURL;
+    private static HttpResponse response = null;
+
+    private static final String BASEURL = "https://api.openweathermap.org/data/2.5/weather?";
+    private static String url = "";
+
+
+    public static String getUrl() {
+        return url;
+    }
+
+    public static HttpResponse<String> getConnection(String city, String key) {
+        url = BASEURL + "q=" + city + "&appid=" + key;
+        return getResponse();
+    }
+
+    public static HttpResponse<String> getConnection(String lon, String lat, String key) {
+        url = BASEURL + "lon=" + lon + "&lat=" + lat + "&appid=" + key;
+        return getResponse();
     }
 
     private static HttpResponse<String> getResponse() {
         HttpClient httpClient = HttpClient.newHttpClient();
-        HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(getConnection())).build();
-        HttpResponse<String> httpResponse = null;
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .uri(URI.create(getUrl()))
+                .build();
+        response = null;
         try {
-            httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        return httpResponse;
+        return response;
     }
 
     public static HttpResponse<String> getConnectionResponse() {
         return getResponse();
+    }
+
+    public static Integer getStatusCode() {
+        return response.statusCode();
+    }
+
+    public static String getHeader(String key) {
+        return response.headers().allValues(key).get(0);
+    }
+
+    public static Object getBody() {
+        return response.body();
     }
 }
