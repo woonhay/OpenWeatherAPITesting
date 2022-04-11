@@ -105,4 +105,54 @@ public class WeatherDTOM {
 		return getWeather().get(0).getIcon().matches("\\d{2}[d|n][.][p][n][g]");
 	}
 
+
+	public boolean isPressureValid(int val){
+		return val <= 870 && val <= 1085;
+	}
+
+	public boolean isHumidityValid(int val){
+		return val >= 0 && val <= 100;
+	}
+
+	public boolean IsVisibilityValid(int vis){
+		return vis >= 0 && vis <= 100;
+	}
+
+	public boolean IsCelisusValid(double celsius){
+		double cel = celsius;
+		return cel >=-74 && cel<=56.7;
+	}
+
+	public boolean IsFahreinheitValid(double fahreinheit){
+		double fah = fahreinheit;
+		return fah >= -101.2 && fah <= 135;
+	}
+
+	public boolean IsKelvinValid(double kelvin){
+		double kel = kelvin;
+		return kel >=0 && kel <=178;
+
+	}
+
+	public double CovertCelsiusToFahreinheit(double celsius){
+		double cel = celsius;
+		double fahreinheit = 0;
+		fahreinheit = (cel * 9 / 5) + 32;
+
+		return fahreinheit;
+	}
+	public double CovertFahreinheitToCelsius(double fahreinheit){
+		double fah = fahreinheit;
+		double celsius = 0;
+		celsius = (fahreinheit - 32) * 5 / 9 ;
+
+		return celsius;
+	}
+	public double CovertCelsiusToKelvin(double celsius){
+		double cel = celsius;
+		double kelvin = celsius + 273.15;
+
+		return kelvin;
+	}
+
 }
