@@ -10,6 +10,8 @@ import java.util.Map;
 
 public class ConnectionManager {
 
+    private static String key = PropertiesLoader.getProperties().getProperty("key");
+
     private static HttpResponse response = null;
 
     private static final String BASEURL = "https://api.openweathermap.org/data/2.5/weather?";
@@ -20,12 +22,12 @@ public class ConnectionManager {
         return url;
     }
 
-    public static HttpResponse<String> getConnection(String city, String key) {
+    public static HttpResponse<String> getConnection(String city) {
         url = BASEURL + "q=" + city + "&appid=" + key;
         return getResponse();
     }
 
-    public static HttpResponse<String> getConnection(String lon, String lat, String key) {
+    public static HttpResponse<String> getConnection(String lon, String lat) {
         url = BASEURL + "lon=" + lon + "&lat=" + lat + "&appid=" + key;
         return getResponse();
     }
@@ -43,7 +45,6 @@ public class ConnectionManager {
         }
         return response;
     }
-
     public static HttpResponse<String> getConnectionResponse() {
         return getResponse();
     }

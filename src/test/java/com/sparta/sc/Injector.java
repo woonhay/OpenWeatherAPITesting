@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 
 public class Injector {
-    public static WeatherDTO injectDTO(String url){
+    public WeatherDTO injectDTO(String url){
         WeatherDTO weatherDTO = new WeatherDTO();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
