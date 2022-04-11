@@ -2,8 +2,9 @@ package com.sparta.sc.DTO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class WeatherConditionDTOTest {
+public class WeatherConditionCodes {
     public static List<WeatherConditionDTO> getWeatherCondition() {
         List<WeatherConditionDTO> weatherConditionDTOList = new ArrayList<>();
 
@@ -72,7 +73,7 @@ public class WeatherConditionDTOTest {
         return weatherConditionDTOList;
     }
 
-    public static void main(String[] args) {
-        System.out.println(getWeatherCondition());
+    public static Stream<WeatherConditionDTO> getWeatherConditionStream() {
+        return getWeatherCondition().stream();
     }
 }
