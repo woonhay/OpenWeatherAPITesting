@@ -1,6 +1,8 @@
 package com.sparta.sc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sparta.sc.DTO.WeatherDTO;
+
 import java.io.IOException;
 
 public class Injector {

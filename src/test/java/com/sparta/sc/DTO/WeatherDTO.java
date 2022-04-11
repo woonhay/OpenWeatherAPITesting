@@ -1,4 +1,4 @@
-package com.sparta.sc;
+package com.sparta.sc.DTO;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
