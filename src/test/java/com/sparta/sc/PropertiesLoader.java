@@ -8,7 +8,7 @@ public class PropertiesLoader {
     public static Properties getProperties() {
         Properties properties = new Properties();
         try{
-            properties.load(new FileReader("src/main/resources/myJdbc.properties"));
+            properties.load(new FileReader("src/test/resources/api.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
