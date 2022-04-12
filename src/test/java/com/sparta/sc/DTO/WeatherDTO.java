@@ -228,7 +228,7 @@ public class WeatherDTO{
 		return getCod() == 200;
 	}
 
-	public boolean isIdBiggerThanO() {
+	public boolean isCityIdBiggerThanO() {
 		return getId() > 0;
 	}
 
@@ -238,7 +238,7 @@ public class WeatherDTO{
 	}
 
 	public boolean isIconValid(){
-		return getWeather().get(0).getIcon().matches("\\d{2}[d|n][.][p][n][g]");
+		return getWeather().get(0).getIcon().matches("\\d{2}[d|n]");
 	}
 
 
