@@ -2,9 +2,11 @@ package com.sparta.sc.utilities;
 
 import java.text.DecimalFormat;
 
+import static com.sparta.sc.utilities.Formatter.df;
+
 public class SpeedConverter {
 
-    public static DecimalFormat df = new DecimalFormat("0.00");
+
 
     public static double mpsToMph(double mps) {
         double mph = Double.parseDouble(df.format(mps * 2.237));

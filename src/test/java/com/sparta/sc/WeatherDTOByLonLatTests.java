@@ -43,7 +43,6 @@ public class WeatherDTOByLonLatTests {
         Assertions.assertTrue(response.isSameLat(lat));
     }
 
-
     @Test
     @DisplayName("Longitude is Between minus 180 and 180")
     void longitudeIsBetweenMinus180And180() {
@@ -140,4 +139,6 @@ public class WeatherDTOByLonLatTests {
     void checkIfWeatherIconFileNameFormatIsValid() {
         Assertions.assertTrue(response.isIconValid());
     }
+
+
 }
