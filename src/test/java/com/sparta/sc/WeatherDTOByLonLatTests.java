@@ -211,4 +211,5 @@ public class WeatherDTOByLonLatTests {
     void checkIfTimezoneIsInRange() {
         Assertions.assertTrue(response.isTimezoneInRange());
     }
+
 }

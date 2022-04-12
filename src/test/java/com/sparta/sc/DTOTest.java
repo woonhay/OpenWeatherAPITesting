@@ -4,7 +4,9 @@ import com.sparta.sc.dto.WeatherDTO;
 import org.junit.AssumptionViolatedException;
 import org.junit.jupiter.api.*;
 
+
 import static com.sparta.sc.ConnectionManager.*;
+import static com.sparta.sc.utilities.Formatter.df;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -14,13 +16,19 @@ public class DTOTest {
 
     @BeforeEach
     void setup() {
-        response = Injector.injectDTO(getConnection("Delhi"));
+        response = Injector.injectDTO(getConnection("Roma"));
     }
 
     @Test
     @DisplayName("Response Gives Status Code 200")
     void ifResponseGivesStatusCode200() {
         assertEquals(200, response.getCod());
+    }
+
+    @Test
+    @DisplayName("Check base is station")
+    void checkBaseIsStation() {
+        Assertions.assertEquals("stations", response.getBase());
     }
 
     @Test
@@ -62,13 +70,13 @@ public class DTOTest {
     @Test
     @DisplayName("Converts wind speed from mph to metres per second")
     void convertsWindSpeedFromMphToMetresPerSecond() {
-        assertEquals(response.getWind().getSpeed()/2.237,response.getWindInMps());
+        assertEquals(Double.parseDouble(df.format(response.getWind().getSpeed()/2.237)),response.getWindInMps());
     }
 
     @Test
     @DisplayName("Converts wind speed from mps to miles per hour")
     void convertsWindSpeedFromMpsToMilesPerHour() {
-        assertEquals(response.getWind().getSpeed()*2.237, response.getWindInMph());
+        assertEquals(Double.parseDouble(df.format(response.getWind().getSpeed()*2.237)), response.getWindInMph());
     }
 
     @Test
@@ -86,8 +94,13 @@ public class DTOTest {
     @Test
     @DisplayName("Check cloud level between 0 and 100")
     void checkCloudLevelBetween0And100() {
-        System.out.println(response.getClouds().getAll());
-        Assertions.assertTrue(response.isCloudValid());
+        Assumptions.assumeTrue(response.isCloudValid());
+    }
+
+    @Test
+    @DisplayName("Check rain valid with level 1hr between 0 and 320 and 3hr between 0 and 1000")
+    void checkRainValidWithLevel1HrBetween0And320And3HrBetween0And1000() {
+        Assumptions.assumeTrue(response.isRainValid());
     }
 
     @Test
@@ -155,5 +168,31 @@ public class DTOTest {
     void checkIfCelciusTemperatureIsBetween199And330() {
         Assertions.assertTrue(response.isKelvinValid());
     }
+
+    @Test
+    @DisplayName("Check if weather results received today")
+    void checkIfWeatherResultsReceivedToday() {
+        Assertions.assertTrue(response.isDateToday());
+    }
+
+    @Test
+    @DisplayName("Check if sunrise data is for today")
+    void checkIfSunriseDataIsForToday() {
+        Assertions.assertTrue(response.isSunriseToday());
+    }
+
+    @Test
+    @DisplayName("Check if sunset data is for today")
+    void checkIfSunsetDataIsForToday() {
+        Assertions.assertTrue(response.isSunsetToday());
+    }
+
+    @Test
+    @DisplayName("Check if timezone ranges between minus 12h and plus 14h from UTC ")
+    void checkIfTimezoneRangesBetweenMinus12HAndPlus14HFromUtc() {
+        Assertions.assertTrue(response.isTimezoneInRange());
+    }
+
+
 
 }
