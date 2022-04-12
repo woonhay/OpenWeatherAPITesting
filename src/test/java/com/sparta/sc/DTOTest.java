@@ -4,8 +4,9 @@ import com.sparta.sc.dto.WeatherDTO;
 import org.junit.AssumptionViolatedException;
 import org.junit.jupiter.api.*;
 
+
 import static com.sparta.sc.ConnectionManager.*;
-import static com.sparta.sc.utilities.SpeedConverter.df;
+import static com.sparta.sc.utilities.Formatter.df;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

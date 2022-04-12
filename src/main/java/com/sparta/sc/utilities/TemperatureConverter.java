@@ -4,9 +4,11 @@ import io.cucumber.java.hu.De;
 
 import java.text.DecimalFormat;
 
+import static com.sparta.sc.utilities.Formatter.df;
+
 public class TemperatureConverter {
 
-    public static DecimalFormat df = new DecimalFormat("0.00");
+
 
     public static double CovertCelsiusToFahreinheit(double celsius){
         double Fahreinheit = Double.parseDouble(df.format((celsius * 9 / 5) + 32));
