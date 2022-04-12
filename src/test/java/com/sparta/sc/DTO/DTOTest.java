@@ -55,7 +55,6 @@ public class DTOTest {
         Assertions.assertTrue(response.isDegreeWindValid());
     }
 
-    my
 
 //    @Test
 //    @DisplayName("if Longitude Same as Passed Longitude")
