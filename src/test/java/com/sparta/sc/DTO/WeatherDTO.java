@@ -116,7 +116,7 @@ public class WeatherDTO{
 		weatherConditionDTOList = WeatherConditionCodes.getWeatherCondition();
 		for (int i = 0; i < weatherConditionDTOList.size(); i ++) {
 			if (weatherConditionDTOList.get(i).getId() == getWeather().get(0).getId()) {
-				if (weatherConditionDTOList.get(i).getMain() == getWeather().get(0).getMain()) {
+				if (weatherConditionDTOList.get(i).getMain().equals(getWeather().get(0).getMain())) {
 					isMatch = true;
 				}
 			}
@@ -129,7 +129,7 @@ public class WeatherDTO{
 		weatherConditionDTOList = WeatherConditionCodes.getWeatherCondition();
 		for (int i = 0; i < weatherConditionDTOList.size(); i ++) {
 			if (weatherConditionDTOList.get(i).getId() == getWeather().get(0).getId()) {
-				if (weatherConditionDTOList.get(i).getDescription() == getWeather().get(0).getDescription()) {
+				if (weatherConditionDTOList.get(i).getDescription().equals(getWeather().get(0).getDescription())) {
 					isMatch = true;
 				}
 			}
@@ -143,12 +143,12 @@ public class WeatherDTO{
 		for (int i = 0; i < weatherConditionDTOList.size(); i ++) {
 			if (weatherConditionDTOList.get(i).getId() == getWeather().get(0).getId()) {
 				if (weatherConditionDTOList.get(i).getIcon().length == 1) {
-					if (weatherConditionDTOList.get(i).getIcon()[0] == getWeather().get(0).getDescription()) {
+					if (weatherConditionDTOList.get(i).getIcon()[0].equals(getWeather().get(0).getIcon())) {
 						isMatch = true;
 					}
 				}
 				else {
-					if (weatherConditionDTOList.get(i).getIcon()[0] == getWeather().get(0).getDescription() || weatherConditionDTOList.get(i).getIcon()[1] == getWeather().get(0).getDescription()) {
+					if (weatherConditionDTOList.get(i).getIcon()[0].equals(getWeather().get(0).getIcon())  || weatherConditionDTOList.get(i).getIcon()[1].equals(getWeather().get(0).getIcon())) {
 						isMatch = true;
 					}
 				}
