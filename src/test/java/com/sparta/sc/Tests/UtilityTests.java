@@ -32,7 +32,7 @@ public class UtilityTests {
         @Test
         @DisplayName("Convert Celsius To Fahreinheit")
         void convertCelsiusToFahreinheit() {
-            assertEquals(TemperatureConverter.CovertCelsiusToFahreinheit(0),32);
+            assertEquals(TemperatureConverter.CovertCelsiusToFahreinheit(3),37.4);
         }
 
         @Test
@@ -50,14 +50,20 @@ public class UtilityTests {
         @Test
         @DisplayName("Convert Fahreinheit To Kelvin")
         void convertFahreinheitToKelvin() {
-            assertEquals(TemperatureConverter.ConvertFahreinheitToKelvin(332),439.817);
+            assertEquals(TemperatureConverter.ConvertFahreinheitToKelvin(332),439.82);
         }
 
         @Test
         @DisplayName("Convert Kelvin To Celsius")
         void convertKelvinToCelsius() {
-            assertEquals(TemperatureConverter.ConvertKelvinToCelsius(332), 58.15);
+            assertEquals(TemperatureConverter.ConvertKelvinToCelsius(332), 58.85);
 
+        }
+
+        @Test
+        @DisplayName("Convert Kelvin To Fahreinheit")
+        void convertKelvinToFahreinheit() {
+            Assertions.assertEquals(TemperatureConverter.ConvertKelvinToFahreinheit(332),137.93);
         }
     }
 
