@@ -158,12 +158,12 @@ public class WeatherDTO{
 	}
 
 	//SimWeatherDTO
-	// check if the lon is the same we passed as a parameter
+	// check if the lon is the same we passed as a parameter - testing issue, convert to int/String?
 	public boolean isSameLon(double lon) {
 		return lon == getCoord().getLon();
 	}
 
-	// check if the lat is the same we passed as a parameter
+	// check if the lat is the same we passed as a parameter - testing issue, convert to int/String?
 	public boolean isSameLat(double lat) {
 		return lat == getCoord().getLat();
 	}
