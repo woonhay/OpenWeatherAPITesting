@@ -1,4 +1,4 @@
-package com.sparta.sc;
+package com.sparta.sc.Tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
