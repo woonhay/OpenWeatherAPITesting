@@ -15,27 +15,27 @@ Feature: Collect the correct data from the API
     When I enter a specific city
     Then I will find the country it belongs to
 
-  Scenario: get a list of cities
+  Scenario: find the timezone of a city
     Given I am testing the api
-    When I enter the country
-    Then I will get a list of cities
+    When I enter a specific city
+    Then I receive the timezone in that city
 
-  Scenario: get the correct information
-    Given I am making an api call
-    When I pass the parameters
-    Then I will get the correct information
+#  Scenario: get a list of cities
+#    Given I am testing the api
+#    When I enter the country
+#    Then I will get a list of cities
 
-  Scenario: choose the language
-    Given I am calling the api
-    When I choose the language
-    Then I can read the information easily
+#  Scenario: choose the language
+#    Given I am calling the api
+#    When I choose the language
+#    Then I can read the information easily
 
-  Scenario: input city id
-    Given I am calling the api
-    When I input the city id
-    Then I can select the correct location
-
-  Scenario: input zip code
-    Given I am calling the api
-    When I input the zip code
-    Then I can select the correct location
+#  Scenario: input city id
+#    Given I am calling the api
+#    When I input the city id
+#    Then I can select the correct location
+#
+#  Scenario: input zip code
+#    Given I am calling the api
+#    When I input the zip code
+#    Then I can select the correct location
