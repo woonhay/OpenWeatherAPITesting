@@ -1,11 +1,7 @@
-package com.sparta.sc.Tests;
+package com.sparta.sc;
 
-import com.sparta.sc.DTO.WeatherDTO;
-import com.sparta.sc.Injector;
+import com.sparta.sc.dto.WeatherDTO;
 import org.junit.jupiter.api.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static com.sparta.sc.ConnectionManager.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;

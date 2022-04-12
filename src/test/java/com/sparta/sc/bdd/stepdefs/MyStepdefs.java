@@ -1,6 +1,6 @@
 package com.sparta.sc.bdd.stepdefs;
 
-import com.sparta.sc.DTO.WeatherDTO;
+import com.sparta.sc.dto.WeatherDTO;
 import com.sparta.sc.Injector;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;

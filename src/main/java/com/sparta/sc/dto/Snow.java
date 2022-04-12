@@ -1,8 +1,8 @@
-package com.sparta.sc.DTO;
+package com.sparta.sc.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Rain {
+public class Snow {
 
     @JsonProperty("1h")
     private double jsonMember1h;
@@ -17,6 +17,4 @@ public class Rain {
     public double getJsonMember3h() {
         return jsonMember3h;
     }
-
-
 }

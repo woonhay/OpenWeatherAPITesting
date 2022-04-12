@@ -1,4 +1,4 @@
-package com.sparta.sc.DTO;
+package com.sparta.sc.dto;
 
 public class WeatherConditionDTO {
     private int id;

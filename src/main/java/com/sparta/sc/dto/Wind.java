@@ -1,4 +1,4 @@
-package com.sparta.sc.DTO;
+package com.sparta.sc.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
