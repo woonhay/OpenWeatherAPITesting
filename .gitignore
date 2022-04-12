@@ -3,7 +3,6 @@
 
 # Properties file
 api.properties
-src/test/resources/api.properties
 
 # Log file
 *.log
