@@ -10,7 +10,14 @@ public class TemperatureConverter {
         return fahreinheit;
     }
 
-    public double CovertFahreinheitToCelsius(double fahreinheit){
+    public static double CovertCelsiusToKelvin(double celsius){
+        double cel = celsius;
+        double kelvin = celsius + 273.15;
+
+        return kelvin;
+    }
+
+    public static double CovertFahreinheitToCelsius(double fahreinheit){
         double fah = fahreinheit;
         double celsius = 0;
         celsius = (fahreinheit - 32) * 5 / 9 ;
@@ -18,11 +25,17 @@ public class TemperatureConverter {
         return celsius;
     }
 
-    public double CovertCelsiusToKelvin(double celsius){
-        double cel = celsius;
-        double kelvin = celsius + 273.15;
 
+    public static double ConvertFahreinheitToKelvin(double fahreinheit){
+        double fah = fahreinheit;
+        double kelvin = 0;
+        kelvin = (fah - 32) * 5 / 9 + 273.15 ;
         return kelvin;
+    }
+
+    public static double ConvertKelvinToCelsius(double kelvin){
+        double Celsius = kelvin - 273.15;
+        return Celsius;
     }
 
 }
