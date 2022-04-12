@@ -7,7 +7,7 @@ import java.time.ZoneId;
 public class TimeConverter {
 
     public static LocalDate epochToLocalDate(int time){
-        return LocalDate.ofInstant(Instant.ofEpochSecond(time), ZoneId.systemDefault());
+        return LocalDate.ofInstant(Instant.ofEpochSecond(time), ZoneId.of("GMT"));
     }
 
     public static long localDateToEpoch(LocalDate localDate){
