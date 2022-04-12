@@ -1,6 +1,7 @@
 package com.sparta.sc;
 
 import com.sparta.sc.dto.WeatherDTO;
+import com.sparta.sc.utilities.TemperatureConverter;
 import org.junit.AssumptionViolatedException;
 import org.junit.jupiter.api.*;
 
@@ -167,6 +168,20 @@ public class DTOTest {
     @DisplayName("Check if kelvin temperature is between 199 and 330")
     void checkIfCelciusTemperatureIsBetween199And330() {
         Assertions.assertTrue(response.isKelvinValid());
+    }
+
+    @Test
+    @DisplayName("Check celsius temperature is valid")
+    void checkCelsiusTemperatureIsValid() {
+        double tempInCelsius = TemperatureConverter.ConvertKelvinToCelsius(response.getMain().getTemp());
+        Assertions.assertTrue(response.isCelsiusValid(tempInCelsius));
+    }
+
+    @Test
+    @DisplayName("Check fahrenheit temperature is valid")
+    void checkFahrenheitTemperatureIsValid() {
+        double tempInFahrenheit = TemperatureConverter.ConvertKelvinToFahreinheit(response.getMain().getTemp());
+        Assertions.assertTrue(response.isFahreinheitValid(tempInFahrenheit));
     }
 
     @Test
