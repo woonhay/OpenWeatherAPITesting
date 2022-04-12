@@ -1,5 +1,6 @@
 package com.sparta.sc.DTO;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.stream.Stream;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sparta.sc.utilities.SpeedConverter;
+import com.sparta.sc.utilities.TimeConverter;
 
 public class WeatherDTO{
 
@@ -270,6 +272,22 @@ public class WeatherDTO{
 
 	}
 
+	//WeatherDTOSim2
+	public boolean isDateToday(){
+		return LocalDate.now().equals(TimeConverter.epochToLocalDate(getDt()));
+	}
+	public boolean isSunriseToday(){
+		return LocalDate.now().equals(TimeConverter.epochToLocalDate(getSys().getSunrise()));
+	}
+	public boolean isSunsetToday(){
+		return LocalDate.now().equals(TimeConverter.epochToLocalDate(getSys().getSunset()));
+	}
 
+	public boolean isTimezoneInRange(){
+		// timezone range goes form -12h to +14h
+		// -12h = -43200sec
+		// +14h = 50400sec
+		return getTimezone() >= -43200 && getTimezone() <= 50400;
+	}
 
 }
