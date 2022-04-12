@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sparta.sc.utilities.SpeedConverter;
 import com.sparta.sc.utilities.TimeConverter;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.*;
 
 public class WeatherDTO {
 
@@ -25,15 +27,15 @@ public class WeatherDTO {
     @JsonProperty("main")
     private Main main;
 
-    @JsonIgnore
+    @JsonInclude(Include.NON_NULL)
     @JsonProperty("clouds")
     private Clouds clouds;
 
-    @JsonIgnore
+    @JsonInclude(Include.NON_NULL)
     @JsonProperty("rain")
     private Rain rain;
 
-    @JsonIgnore
+    @JsonInclude(Include.NON_NULL)
     @JsonProperty("snow")
     private Snow snow;
 
@@ -222,7 +224,10 @@ public class WeatherDTO {
     }
 
     public boolean isCloudValid() {
-        return getClouds().getAll() >= 0 && getClouds().getAll() <= 100;
+        if(getClouds() != null){
+            return getClouds().getAll() >= 0 && getClouds().getAll() <= 100;
+        }
+        return false;
     }
 
     public boolean isNameEmpty() {
@@ -251,9 +256,8 @@ public class WeatherDTO {
     }
 
     public boolean isIconValid() {
-        return getWeather().get(0).getIcon().matches("\\d{2}[d|n][.][p][n][g]");
+        return getWeather().get(0).getIcon().matches("\\d{2}[d|n]");
     }
-
 
     public boolean isPressureValid(int val) {
         return val <= 870 && val <= 1085;
