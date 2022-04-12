@@ -65,10 +65,10 @@ public class WeatherConditionCodes {
 
         weatherConditionDTOList.add(new WeatherConditionDTO(new String[]{"800", "Clear", "clear sky", "01d", "01n"}));
 
-        weatherConditionDTOList.add(new WeatherConditionDTO(new String[]{"801", "Clouds", "few clouds: 11-25%", "02d", "02n"}));
-        weatherConditionDTOList.add(new WeatherConditionDTO(new String[]{"802", "Clouds", "scattered clouds: 25-50%", "03d", "03n"}));
-        weatherConditionDTOList.add(new WeatherConditionDTO(new String[]{"803", "Clouds", "broken clouds: 51-84%", "04d", "04n"}));
-        weatherConditionDTOList.add(new WeatherConditionDTO(new String[]{"804", "Clouds", "overcast clouds: 85-100%", "04d", "04n"}));
+        weatherConditionDTOList.add(new WeatherConditionDTO(new String[]{"801", "Clouds", "few clouds", "02d", "02n"}));
+        weatherConditionDTOList.add(new WeatherConditionDTO(new String[]{"802", "Clouds", "scattered clouds", "03d", "03n"}));
+        weatherConditionDTOList.add(new WeatherConditionDTO(new String[]{"803", "Clouds", "broken clouds", "04d", "04n"}));
+        weatherConditionDTOList.add(new WeatherConditionDTO(new String[]{"804", "Clouds", "overcast clouds", "04d", "04n"}));
 
         return weatherConditionDTOList;
     }
