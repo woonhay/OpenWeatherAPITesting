@@ -163,14 +163,8 @@ public class WeatherDTOByLonLatTests {
     }
 
     @Test
-    @DisplayName("Check if kelvin temperature is between 199 and 330")
-    void checkIfCelciusTemperatureIsBetween199And330() {
-        Assertions.assertTrue(response.isKelvinValid());
-    }
-
-    @Test
-    @DisplayName("Check default temperature is valid")
-    void checkDefaultTemperatureIsValid() {
+    @DisplayName("Check if default kelvin temperature is between 199 and 330")
+    void checkIfDefaultKelvinTemperatureIsBetween199And330() {
         Assertions.assertTrue(response.isKelvinValid());
     }
 
