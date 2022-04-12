@@ -13,6 +13,8 @@ public class WeatherDTO{
 
 	private static List<WeatherConditionDTO> weatherConditionDTOList = new ArrayList<>();
 
+	private static final String[] weatherNames = new String[]{"Thunderstorm", "Drizzle", "Rain", "Snow", "Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash", "Squall", "Tornado", "Clear", "Clouds"};
+
 	@JsonProperty("visibility")
 	private int visibility;
 
@@ -178,6 +180,10 @@ public class WeatherDTO{
 		return getWeather().get(0).getMain().equals("");
 	}
 
+	public boolean isNameWeatherValid() {
+		return Arrays.stream(weatherNames).anyMatch(name -> name.equals(getWeather().get(0).getMain()));
+	}
+
 	public boolean isDescriptionEmpty() {
 		return getWeather().get(0).getDescription().equals("");
 	}
@@ -227,6 +233,15 @@ public class WeatherDTO{
 	}
 
 	//WeatherDTOM
+	public boolean isWeatherIDValid(){
+		return getWeather().get(0).getId() >= 200 && getWeather().get(0).getId() <= 804;
+	}
+
+	public boolean isIconValid(){
+		return getWeather().get(0).getIcon().matches("\\d{2}[d|n][.][p][n][g]");
+	}
+
+
 	public boolean isPressureValid(int val){
 		return val <= 870 && val <= 1085;
 	}
