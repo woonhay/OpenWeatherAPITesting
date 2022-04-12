@@ -1,5 +1,6 @@
-package com.sparta.sc.DTO;
+package com.sparta.sc.Tests;
 
+import com.sparta.sc.DTO.WeatherDTO;
 import com.sparta.sc.Injector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,5 +24,11 @@ public class DTOTest {
         System.out.println(response.getCod());
         Assertions.assertTrue(response.getCod() == 200);
     }
+
+
+
+
+
+
 
 }
