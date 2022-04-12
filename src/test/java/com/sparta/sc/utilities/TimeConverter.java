@@ -13,11 +13,4 @@ public class TimeConverter {
     public static long localDateToEpoch(LocalDate localDate){
         return localDate.toEpochDay();
     }
-
-    public static void main(String[] args) {
-        LocalDate localDate = LocalDate.now();
-
-        System.out.println(localDate);
-    }
-
 }
