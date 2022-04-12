@@ -7,287 +7,302 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sparta.sc.utilities.SpeedConverter;
 import com.sparta.sc.utilities.TimeConverter;
 
-public class WeatherDTO{
+public class WeatherDTO {
 
-	private static List<WeatherConditionDTO> weatherConditionDTOList = new ArrayList<>();
+    private static List<WeatherConditionDTO> weatherConditionDTOList = new ArrayList<>();
 
-	private static final String[] weatherNames = new String[]{"Thunderstorm", "Drizzle", "Rain", "Snow", "Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash", "Squall", "Tornado", "Clear", "Clouds"};
+    private static final String[] weatherNames = new String[]{"Thunderstorm", "Drizzle", "Rain", "Snow", "Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash", "Squall", "Tornado", "Clear", "Clouds"};
 
-	@JsonProperty("visibility")
-	private int visibility;
+    @JsonProperty("visibility")
+    private int visibility;
 
-	@JsonProperty("timezone")
-	private int timezone;
+    @JsonProperty("timezone")
+    private int timezone;
 
-	@JsonProperty("main")
-	private Main main;
+    @JsonProperty("main")
+    private Main main;
 
-	@JsonProperty("clouds")
-	private Clouds clouds;
+    @JsonIgnore
+    @JsonProperty("clouds")
+    private Clouds clouds;
 
-	@JsonProperty("sys")
-	private Sys sys;
+    @JsonIgnore
+    @JsonProperty("rain")
+    private Rain rain;
 
-	@JsonProperty("dt")
-	private int dt;
+    @JsonIgnore
+    @JsonProperty("snow")
+    private Snow snow;
 
-	@JsonProperty("coord")
-	private Coord coord;
+    @JsonProperty("sys")
+    private Sys sys;
 
-	@JsonProperty("weather")
-	private List<WeatherItem> weather;
+    @JsonProperty("dt")
+    private int dt;
 
-	@JsonProperty("name")
-	private String name;
+    @JsonProperty("coord")
+    private Coord coord;
 
-	@JsonProperty("cod")
-	private int cod;
+    @JsonProperty("weather")
+    private List<WeatherItem> weather;
 
-	@JsonProperty("id")
-	private int id;
+    @JsonProperty("name")
+    private String name;
 
-	@JsonProperty("base")
-	private String base;
+    @JsonProperty("cod")
+    private int cod;
 
-	@JsonProperty("wind")
-	private Wind wind;
+    @JsonProperty("id")
+    private int id;
 
-	public int getVisibility(){
-		return visibility;
-	}
+    @JsonProperty("base")
+    private String base;
 
-	public int getTimezone(){
-		return timezone;
-	}
+    @JsonProperty("wind")
+    private Wind wind;
 
-	public Main getMain(){
-		return main;
-	}
+    public int getVisibility() {
+        return visibility;
+    }
 
-	public Clouds getClouds(){
-		return clouds;
-	}
+    public int getTimezone() {
+        return timezone;
+    }
 
-	public Sys getSys(){
-		return sys;
-	}
+    public Main getMain() {
+        return main;
+    }
 
-	public int getDt(){
-		return dt;
-	}
+    public Clouds getClouds() {
+        return clouds;
+    }
 
-	public Coord getCoord(){
-		return coord;
-	}
+    public Rain getRain() {
+        return rain;
+    }
 
-	public List<WeatherItem> getWeather(){
-		return weather;
-	}
+    public Sys getSys() {
+        return sys;
+    }
 
-	public String getName(){
-		return name;
-	}
+    public int getDt() {
+        return dt;
+    }
 
-	public int getCod(){
-		return cod;
-	}
+    public Coord getCoord() {
+        return coord;
+    }
 
-	public int getId(){
-		return id;
-	}
+    public List<WeatherItem> getWeather() {
+        return weather;
+    }
 
-	public String getBase(){
-		return base;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Wind getWind(){
-		return wind;
-	}
+    public int getCod() {
+        return cod;
+    }
 
-	//Ryan
-	public boolean checkIDValid() {
-		return WeatherConditionCodes.getWeatherConditionStream().anyMatch(weatherCondition -> weatherCondition.getId() == getWeather().get(0).getId());
-	}
+    public int getId() {
+        return id;
+    }
 
-	public boolean checkMainMatchTheID() {
-		boolean isMatch = false;
-		weatherConditionDTOList = WeatherConditionCodes.getWeatherCondition();
-		for (int i = 0; i < weatherConditionDTOList.size(); i ++) {
-			if (weatherConditionDTOList.get(i).getId() == getWeather().get(0).getId()) {
-				if (weatherConditionDTOList.get(i).getMain().equals(getWeather().get(0).getMain())) {
-					isMatch = true;
-				}
-			}
-		}
-		return isMatch;
-	}
+    public String getBase() {
+        return base;
+    }
 
-	public boolean checkDescriptionMatchTheID() {
-		boolean isMatch = false;
-		weatherConditionDTOList = WeatherConditionCodes.getWeatherCondition();
-		for (int i = 0; i < weatherConditionDTOList.size(); i ++) {
-			if (weatherConditionDTOList.get(i).getId() == getWeather().get(0).getId()) {
-				if (weatherConditionDTOList.get(i).getDescription().equals(getWeather().get(0).getDescription())) {
-					isMatch = true;
-				}
-			}
-		}
-		return isMatch;
-	}
+    public Wind getWind() {
+        return wind;
+    }
 
-	public boolean checkIconMatchTheID() {
-		boolean isMatch = false;
-		weatherConditionDTOList = WeatherConditionCodes.getWeatherCondition();
-		for (int i = 0; i < weatherConditionDTOList.size(); i ++) {
-			if (weatherConditionDTOList.get(i).getId() == getWeather().get(0).getId()) {
-				if (weatherConditionDTOList.get(i).getIcon().length == 1) {
-					if (weatherConditionDTOList.get(i).getIcon()[0].equals(getWeather().get(0).getIcon())) {
-						isMatch = true;
-					}
-				}
-				else {
-					if (weatherConditionDTOList.get(i).getIcon()[0].equals(getWeather().get(0).getIcon())  || weatherConditionDTOList.get(i).getIcon()[1].equals(getWeather().get(0).getIcon())) {
-						isMatch = true;
-					}
-				}
-			}
-		}
-		return isMatch;
-	}
+    //Ryan
+    public boolean checkIDValid() {
+        return WeatherConditionCodes.getWeatherConditionStream().anyMatch(weatherCondition -> weatherCondition.getId() == getWeather().get(0).getId());
+    }
 
-	//SimWeatherDTO
-	// check if the lon is the same we passed as a parameter
-	public boolean isSameLon(double lon) {
-		return lon == getCoord().getLon();
-	}
+    public boolean checkMainMatchTheID() {
+        boolean isMatch = false;
+        weatherConditionDTOList = WeatherConditionCodes.getWeatherCondition();
+        for (int i = 0; i < weatherConditionDTOList.size(); i++) {
+            if (weatherConditionDTOList.get(i).getId() == getWeather().get(0).getId()) {
+                if (weatherConditionDTOList.get(i).getMain().equals(getWeather().get(0).getMain())) {
+                    isMatch = true;
+                }
+            }
+        }
+        return isMatch;
+    }
 
-	// check if the lat is the same we passed as a parameter
-	public boolean isSameLat(double lat) {
-		return lat == getCoord().getLat();
-	}
+    public boolean checkDescriptionMatchTheID() {
+        boolean isMatch = false;
+        weatherConditionDTOList = WeatherConditionCodes.getWeatherCondition();
+        for (int i = 0; i < weatherConditionDTOList.size(); i++) {
+            if (weatherConditionDTOList.get(i).getId() == getWeather().get(0).getId()) {
+                if (weatherConditionDTOList.get(i).getDescription().equals(getWeather().get(0).getDescription())) {
+                    isMatch = true;
+                }
+            }
+        }
+        return isMatch;
+    }
 
-	public boolean isLonValid() {
-		return getCoord().getLon() >= -180 && getCoord().getLon() <= 180;
-	}
+    public boolean checkIconMatchTheID() {
+        boolean isMatch = false;
+        weatherConditionDTOList = WeatherConditionCodes.getWeatherCondition();
+        for (int i = 0; i < weatherConditionDTOList.size(); i++) {
+            if (weatherConditionDTOList.get(i).getId() == getWeather().get(0).getId()) {
+                if (weatherConditionDTOList.get(i).getIcon().length == 1) {
+                    if (weatherConditionDTOList.get(i).getIcon()[0].equals(getWeather().get(0).getIcon())) {
+                        isMatch = true;
+                    }
+                } else {
+                    if (weatherConditionDTOList.get(i).getIcon()[0].equals(getWeather().get(0).getIcon()) || weatherConditionDTOList.get(i).getIcon()[1].equals(getWeather().get(0).getIcon())) {
+                        isMatch = true;
+                    }
+                }
+            }
+        }
+        return isMatch;
+    }
 
-	public boolean isLatValid() {
-		return getCoord().getLon() >= -90 && getCoord().getLon() <= 90;
-	}
+    //SimWeatherDTO
+    // check if the lon is the same we passed as a parameter
+    public boolean isSameLon(String lon) {
+        return Double.parseDouble(lon) == getCoord().getLon();
+    }
 
-	public boolean isNameWeatherEmpty() {
-		return getWeather().get(0).getMain().equals("");
-	}
+    // check if the lat is the same we passed as a parameter
+    public boolean isSameLat(String lat) {
+        return Double.parseDouble(lat) == getCoord().getLat();
+    }
 
-	public boolean isNameWeatherValid() {
-		return Arrays.stream(weatherNames).anyMatch(name -> name.equals(getWeather().get(0).getMain()));
-	}
+    public boolean isLonValid() {
+        return getCoord().getLon() >= -180 && getCoord().getLon() <= 180;
+    }
 
-	public boolean isDescriptionEmpty() {
-		return getWeather().get(0).getDescription().equals("");
-	}
+    public boolean isLatValid() {
+        return getCoord().getLon() >= -90 && getCoord().getLon() <= 90;
+    }
 
-	public boolean isDegreeWindValid() {
-		return getWind().getDeg() >= 0 && getWind().getDeg() <= 360;
-	}
+    public boolean isNameWeatherEmpty() {
+        return getWeather().get(0).getMain().equals("");
+    }
 
-	public double getWindInMps() {
-		return SpeedConverter.mphToMps(getWind().getSpeed());
-	}
+    public boolean isNameWeatherValid() {
+        return Arrays.stream(weatherNames).anyMatch(name -> name.equals(getWeather().get(0).getMain()));
+    }
 
-	public double getWindInMph() {
-		return SpeedConverter.mpsToMph(getWind().getSpeed());
-	}
+    public boolean isDescriptionEmpty() {
+        return getWeather().get(0).getDescription().equals("");
+    }
 
-	public double getGustInMps() {
-		return SpeedConverter.mphToMps(getWind().getGust());
-	}
+    public boolean isDegreeWindValid() {
+        return getWind().getDeg() >= 0 && getWind().getDeg() <= 360;
+    }
 
-	public double getGustInMph() {
-		return SpeedConverter.mpsToMph(getWind().getGust());
-	}
+    public double getWindInMps() {
+        return SpeedConverter.mphToMps(getWind().getSpeed());
+    }
 
-	public boolean isCloudValid() {
-		return getClouds().getAll() >= 0 && getClouds().getAll() <= 100;
-	}
+    public double getWindInMph() {
+        return SpeedConverter.mpsToMph(getWind().getSpeed());
+    }
 
-	public boolean isNameEmpty() {
-		return getName().equals("");
-	}
+    public double getGustInMps() {
+        return SpeedConverter.mphToMps(getWind().getGust());
+    }
 
-	public boolean isNameNull() {
-		return getName() == null;
-	}
+    public double getGustInMph() {
+        return SpeedConverter.mpsToMph(getWind().getGust());
+    }
 
-	public boolean isCountryTwoLetters() {
-		return getSys().getCountry().matches("[A-Za-z]{2}");
-	}
+    public boolean isCloudValid() {
+        return getClouds().getAll() >= 0 && getClouds().getAll() <= 100;
+    }
 
-	public boolean isStatusCode200() {
-		return getCod() == 200;
-	}
+    public boolean isNameEmpty() {
+        return getName().equals("");
+    }
 
-	public boolean isIdBiggerThanO() {
-		return getId() > 0;
-	}
+    public boolean isNameNull() {
+        return getName() == null;
+    }
 
-	//WeatherDTOM
-	public boolean isWeatherIDValid(){
-		return getWeather().get(0).getId() >= 200 && getWeather().get(0).getId() <= 804;
-	}
+    public boolean isCountryTwoLetters() {
+        return getSys().getCountry().matches("[A-Za-z]{2}");
+    }
 
-	public boolean isIconValid(){
-		return getWeather().get(0).getIcon().matches("\\d{2}[d|n][.][p][n][g]");
-	}
+    public boolean isStatusCode200() {
+        return getCod() == 200;
+    }
+
+    public boolean isIdBiggerThanO() {
+        return getId() > 0;
+    }
+
+    //WeatherDTOM
+    public boolean isWeatherIDValid() {
+        return getWeather().get(0).getId() >= 200 && getWeather().get(0).getId() <= 804;
+    }
+
+    public boolean isIconValid() {
+        return getWeather().get(0).getIcon().matches("\\d{2}[d|n][.][p][n][g]");
+    }
 
 
-	public boolean isPressureValid(int val){
-		return val <= 870 && val <= 1085;
-	}
+    public boolean isPressureValid(int val) {
+        return val <= 870 && val <= 1085;
+    }
 
-	public boolean isHumidityValid(int val){
-		return val >= 0 && val <= 100;
-	}
+    public boolean isHumidityValid(int val) {
+        return val >= 0 && val <= 100;
+    }
 
-	public boolean IsVisibilityValid(int vis){
-		return vis >= 0 && vis <= 100;
-	}
+    public boolean IsVisibilityValid(int vis) {
+        return vis >= 0 && vis <= 100;
+    }
 
-	public boolean IsCelisusValid(double celsius){
-		double cel = celsius;
-		return cel >=-74 && cel<=56.7;
-	}
+    public boolean IsCelisusValid(double celsius) {
+        double cel = celsius;
+        return cel >= -74 && cel <= 56.7;
+    }
 
-	public boolean IsFahreinheitValid(double fahreinheit){
-		double fah = fahreinheit;
-		return fah >= -101.2 && fah <= 135;
-	}
+    public boolean IsFahreinheitValid(double fahreinheit) {
+        double fah = fahreinheit;
+        return fah >= -101.2 && fah <= 135;
+    }
 
-	public boolean IsKelvinValid(double kelvin){
-		double kel = kelvin;
-		return kel >=0 && kel <=178;
+    public boolean IsKelvinValid(double kelvin) {
+        double kel = kelvin;
+        return kel >= 0 && kel <= 178;
 
-	}
+    }
 
-	//WeatherDTOSim2
-	public boolean isDateToday(){
-		return LocalDate.now().equals(TimeConverter.epochToLocalDate(getDt()));
-	}
-	public boolean isSunriseToday(){
-		return LocalDate.now().equals(TimeConverter.epochToLocalDate(getSys().getSunrise()));
-	}
-	public boolean isSunsetToday(){
-		return LocalDate.now().equals(TimeConverter.epochToLocalDate(getSys().getSunset()));
-	}
+    //WeatherDTOSim2
+    public boolean isDateToday() {
+        return LocalDate.now().equals(TimeConverter.epochToLocalDate(getDt()));
+    }
 
-	public boolean isTimezoneInRange(){
-		// timezone range goes form -12h to +14h
-		// -12h = -43200sec
-		// +14h = 50400sec
-		return getTimezone() >= -43200 && getTimezone() <= 50400;
-	}
+    public boolean isSunriseToday() {
+        return LocalDate.now().equals(TimeConverter.epochToLocalDate(getSys().getSunrise()));
+    }
+
+    public boolean isSunsetToday() {
+        return LocalDate.now().equals(TimeConverter.epochToLocalDate(getSys().getSunset()));
+    }
+
+    public boolean isTimezoneInRange() {
+        // timezone range goes form -12h to +14h
+        // -12h = -43200sec
+        // +14h = 50400sec
+        return getTimezone() >= -43200 && getTimezone() <= 50400;
+    }
 
 }
