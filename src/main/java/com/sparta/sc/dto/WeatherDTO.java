@@ -115,6 +115,7 @@ public class WeatherDTO {
     }
 
     public String getBase() {
+        System.out.println(base);
         return base;
     }
 
@@ -224,7 +225,15 @@ public class WeatherDTO {
     }
 
     public boolean isCloudValid() {
-        return getClouds().getAll() >= 0 && getClouds().getAll() <= 100;
+        if(getClouds()!=null){
+            return getClouds().getAll() >= 0 && getClouds().getAll() <= 100;
+        } return false;
+    }
+
+    public boolean isRainValid(){
+        if(getRain()!=null){
+            return getRain().getJsonMember1h()>= 0 && getRain().getJsonMember1h() <= 320 || getRain().getJsonMember3h() >= 0 && getRain().getJsonMember3h() <= 1000;
+        } return false;
     }
 
     public boolean isNameEmpty() {
@@ -297,7 +306,7 @@ public class WeatherDTO {
     }
 
     public boolean isTimezoneInRange() {
-        // timezone range goes form -12h to +14h
+        // timezone range goes from -12h to +14h
         // -12h = -43200sec
         // +14h = 50400sec
         return getTimezone() >= -43200 && getTimezone() <= 50400;
