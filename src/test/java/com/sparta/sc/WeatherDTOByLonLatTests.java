@@ -1,11 +1,14 @@
 package com.sparta.sc;
 
 import com.sparta.sc.dto.WeatherDTO;
+import com.sparta.sc.utilities.SpeedConverter;
+import com.sparta.sc.utilities.TemperatureConverter;
 import org.junit.Assume;
 import org.junit.jupiter.api.*;
 
 import static com.sparta.sc.ConnectionManager.getConnection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WeatherDTOByLonLatTests {
 
@@ -17,7 +20,6 @@ public class WeatherDTOByLonLatTests {
     void setup() {
         response = Injector.injectDTO(getConnection(lon, lat));
     }
-
 
     @Test
     @DisplayName("check response is not null")
@@ -88,13 +90,15 @@ public class WeatherDTOByLonLatTests {
     @Test
     @DisplayName("Converts wind speed from mph to metres per second")
     void convertsWindSpeedFromMphToMetresPerSecond() {
-        assertEquals(response.getWind().getSpeed() / 2.237, response.getWindInMps());
+        double windInMps = SpeedConverter.mphToMps(response.getWind().getSpeed());
+        assertEquals(windInMps, response.getWindInMps());
     }
 
     @Test
     @DisplayName("Converts wind speed from mps to miles per hour")
     void convertsWindSpeedFromMpsToMilesPerHour() {
-        assertEquals(response.getWind().getSpeed() * 2.237, response.getWindInMph());
+        double windInMph = SpeedConverter.mpsToMph(response.getWind().getSpeed());
+        assertEquals(windInMph, response.getWindInMph());
     }
 
     @Test
@@ -140,5 +144,72 @@ public class WeatherDTOByLonLatTests {
         Assertions.assertTrue(response.isIconValid());
     }
 
+    @Test
+    @DisplayName("Check pressure between 870 and 1085")
+    void checkPressureBetween870And1085() {
+        Assertions.assertTrue(response.isPressureValid());
+    }
+
+    @Test
+    @DisplayName("Check is humidity is valid between 0 and 100")
+    void checkIsHumidityIsValidBetween0And100() {
+        assertTrue(response.isHumidityValid());
+    }
+
+    @Test
+    @DisplayName("Check visibility is between 0 and 100")
+    void checkVisibilityIsBetween0And100() {
+        Assertions.assertTrue(response.isVisibilityValid());
+    }
+
+    @Test
+    @DisplayName("Check if kelvin temperature is between 199 and 330")
+    void checkIfCelciusTemperatureIsBetween199And330() {
+        Assertions.assertTrue(response.isKelvinValid());
+    }
+
+    @Test
+    @DisplayName("Check default temperature is valid")
+    void checkDefaultTemperatureIsValid() {
+        Assertions.assertTrue(response.isKelvinValid());
+    }
+
+    @Test
+    @DisplayName("Check celsius temperature is valid")
+    void checkCelsiusTemperatureIsValid() {
+        double tempInCelsius = TemperatureConverter.ConvertKelvinToCelsius(response.getMain().getTemp());
+        Assertions.assertTrue(response.isCelsiusValid(tempInCelsius));
+    }
+
+    @Test
+    @DisplayName("Check fahrenheit temperature is valid")
+    void checkFahrenheitTemperatureIsValid() {
+        double tempInFahrenheit = TemperatureConverter.ConvertKelvinToFahreinheit(response.getMain().getTemp());
+        Assertions.assertTrue(response.isFahreinheitValid(tempInFahrenheit));
+    }
+
+    @Test
+    @DisplayName("Check if date is today")
+    void checkIfDateIsToday() {
+        Assertions.assertTrue(response.isDateToday());
+    }
+
+    @Test
+    @DisplayName("Check if sunrise is today")
+    void checkIfSunriseIsToday() {
+        Assertions.assertTrue(response.isSunriseToday());
+    }
+
+    @Test
+    @DisplayName("Check if sunset is today")
+    void checkIfSunsetIsToday() {
+        Assertions.assertTrue(response.isSunsetToday());
+    }
+
+    @Test
+    @DisplayName("Check if timezone is in range")
+    void checkIfTimezoneIsInRange() {
+        Assertions.assertTrue(response.isTimezoneInRange());
+    }
 
 }
