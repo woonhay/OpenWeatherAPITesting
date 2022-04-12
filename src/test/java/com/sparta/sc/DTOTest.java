@@ -1,10 +1,12 @@
 package com.sparta.sc;
 
 import com.sparta.sc.dto.WeatherDTO;
+import org.junit.AssumptionViolatedException;
 import org.junit.jupiter.api.*;
 
 import static com.sparta.sc.ConnectionManager.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DTOTest {
 
@@ -12,14 +14,13 @@ public class DTOTest {
 
     @BeforeEach
     void setup() {
-        response = Injector.injectDTO(getConnection("London"));
+        response = Injector.injectDTO(getConnection("Delhi"));
     }
 
     @Test
     @DisplayName("Response Gives Status Code 200")
     void ifResponseGivesStatusCode200() {
-        System.out.println(response.getCod());
-        Assertions.assertTrue(response.getCod() == 200);
+        assertEquals(200, response.getCod());
     }
 
     @Test
@@ -35,8 +36,8 @@ public class DTOTest {
     }
 
     @Test
-    @DisplayName("Check if name weather empty")
-    void checkIfNameWeatherEmpty() {
+    @DisplayName("Check if name weather not empty")
+    void checkIfNameWeatherNotEmpty() {
         Assertions.assertFalse(response.isNameWeatherEmpty());
     }
 
@@ -73,7 +74,7 @@ public class DTOTest {
     @Test
     @DisplayName("Converts gust speed from mph to metres per second")
     void convertsGustSpeedFromMphToMetresPerSecond() {
-            assertEquals(response.getWind().getGust()/2.237, response.getGustInMps());
+        assertEquals(response.getWind().getGust()/2.237, response.getGustInMps());
     }
 
     @Test
@@ -85,13 +86,14 @@ public class DTOTest {
     @Test
     @DisplayName("Check cloud level between 0 and 100")
     void checkCloudLevelBetween0And100() {
+        System.out.println(response.getClouds().getAll());
         Assertions.assertTrue(response.isCloudValid());
     }
 
     @Test
     @DisplayName("Check if weather name exists")
     void checkIfWeatherNameExists() {
-        Assertions.assertFalse(response.isNameWeatherEmpty());
+        Assertions.assertFalse(response.isNameEmpty());
     }
 
     @Test
@@ -127,27 +129,31 @@ public class DTOTest {
     @Test
     @DisplayName("Check if weather icon file name format is valid")
     void checkIfWeatherIconFileNameFormatIsValid() {
-        System.out.println(response.getWeather().get(0).getIcon());
         Assertions.assertTrue(response.isIconValid());
+    }
+
+    @Test
+    @DisplayName("Check pressure between 870 and 1085")
+    void checkPressureBetween870And1085() {
+        Assertions.assertTrue(response.isPressureValid());
     }
 
     @Test
     @DisplayName("Check is humidity is valid between 0 and 100")
     void checkIsHumidityIsValidBetween0And100() {
-        //Assertions.assertTrue(isHumidityValid(response.getMain().getHumidity()));
+        assertTrue(response.isHumidityValid());
     }
 
-//    @Test
-//    @DisplayName("Check visibility is valid number between 0 and 100")
-//    void checkVisibilityIsValidNumberBetween0And100() {
-//        Assertions.assertTrue(response.i);
-//    }
+    @Test
+    @DisplayName("Check visibility is between 0 and 100")
+    void checkVisibilityIsBetween0And100() {
+        Assertions.assertTrue(response.isVisibilityValid());
+    }
 
-//    @Test
-//    @DisplayName("if Longitude Same as Passed Longitude")
-//    void ifLongitudeSameAsPassedLongitude() {
-//        getConnection("139","35");
-//        assertTrue(response.isSameLon());
-//    }
+    @Test
+    @DisplayName("Check if kelvin temperature is between 199 and 330")
+    void checkIfCelciusTemperatureIsBetween199And330() {
+        Assertions.assertTrue(response.isKelvinValid());
+    }
 
 }

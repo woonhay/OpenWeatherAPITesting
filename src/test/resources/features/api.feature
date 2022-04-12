@@ -11,31 +11,61 @@ Feature: Collect the correct data from the API
     Then I will get the response
 
   Scenario: find the country it belongs to
-    Given I am testing the api
+    Given I am calling the api
     When I enter a specific city
     Then I will find the country it belongs to
 
-  Scenario: get a list of cities
-    Given I am testing the api
-    When I enter the country
-    Then I will get a list of cities
-
-  Scenario: get the correct information
-    Given I am making an api call
-    When I pass the parameters
-    Then I will get the correct information
-
-  Scenario: choose the language
+  Scenario: find the timezone of a city
     Given I am calling the api
-    When I choose the language
-    Then I can read the information easily
+    When I enter a specific city
+    Then I receive the timezone in that city
 
-  Scenario: input city id
-    Given I am calling the api
-    When I input the city id
-    Then I can select the correct location
+  Scenario: check the weather id is valid or not
+    Given I input the city
+    When I get the response
+    Then I will see the valid weather id
 
-  Scenario: input zip code
-    Given I am calling the api
-    When I input the zip code
-    Then I can select the correct location
+  Scenario: check the main must match the corresponding id in weather conditions codes
+    Given I input the city
+    When I get the response
+    Then I will see the weather main
+
+  Scenario: check the description must match the corresponding id in weather conditions codes
+    Given I input the city
+    When I get the response
+    Then I will see the weather description
+
+  Scenario: check the icon must match the corresponding id in weather conditions codes
+    Given I input the city
+    When I get the response
+    Then I will see the weather icon
+
+  Scenario: check degree wind valid
+    Given I input the city
+    When I get the response
+    Then I will see the valid degree wind
+
+  Scenario: check cloud valid
+    Given I input the city
+    When I get the response
+    Then I will see the valid cloud
+
+#  Scenario: get a list of cities
+#    Given I am testing the api
+#    When I enter the country
+#    Then I will get a list of cities
+
+#  Scenario: choose the language
+#    Given I am calling the api
+#    When I choose the language
+#    Then I can read the information easily
+
+#  Scenario: input city id
+#    Given I am calling the api
+#    When I input the city id
+#    Then I can select the correct location
+#
+#  Scenario: input zip code
+#    Given I am calling the api
+#    When I input the zip code
+#    Then I can select the correct location

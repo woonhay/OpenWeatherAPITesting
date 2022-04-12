@@ -6,15 +6,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.net.http.HttpResponse;
+
 import static com.sparta.sc.ConnectionManager.getConnection;
 
 public class RyanDTOTest {
 
     WeatherDTO response;
 
+
     @BeforeEach
     void setup() {
-        response = Injector.injectDTO(getConnection("London"));
+        HttpResponse connection = getConnection("London");
+        response = Injector.injectDTO(connection);
     }
 
     @Test

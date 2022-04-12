@@ -224,10 +224,7 @@ public class WeatherDTO {
     }
 
     public boolean isCloudValid() {
-        if(getClouds() != null){
-            return getClouds().getAll() >= 0 && getClouds().getAll() <= 100;
-        }
-        return false;
+        return getClouds().getAll() >= 0 && getClouds().getAll() <= 100;
     }
 
     public boolean isNameEmpty() {
@@ -259,32 +256,31 @@ public class WeatherDTO {
         return getWeather().get(0).getIcon().matches("\\d{2}[d|n]");
     }
 
-    public boolean isPressureValid(int val) {
-        return val <= 870 && val <= 1085;
+    public boolean isPressureValid() {
+        return getMain().getPressure() >= 870 && getMain().getPressure() <= 1085;
+
     }
 
-    public boolean isHumidityValid(int val) {
-        return val >= 0 && val <= 100;
+    public boolean isHumidityValid() {
+        return getMain().getHumidity() >= 0 && getMain().getHumidity() <= 100;
     }
 
-    public boolean IsVisibilityValid(int vis) {
-        return vis >= 0 && vis <= 100;
+    public boolean isVisibilityValid() {
+        return getVisibility() >= 0 && getVisibility() <= 10000;
     }
 
-    public boolean IsCelisusValid(double celsius) {
+    public boolean isCelsiusValid(double celsius) {
         double cel = celsius;
         return cel >= -74 && cel <= 56.7;
     }
 
-    public boolean IsFahreinheitValid(double fahreinheit) {
+    public boolean isFahreinheitValid(double fahreinheit) {
         double fah = fahreinheit;
         return fah >= -101.2 && fah <= 135;
     }
 
-    public boolean IsKelvinValid(double kelvin) {
-        double kel = kelvin;
-        return kel >= 0 && kel <= 178;
-
+    public boolean isKelvinValid() {
+        return getMain().getTemp() >= 199 && getMain().getTemp() <= 330;
     }
 
     //WeatherDTOSim2
