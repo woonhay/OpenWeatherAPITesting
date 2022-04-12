@@ -9,24 +9,23 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
+import java.net.http.HttpResponse;
+
 
 public class MyStepdefs {
     private WeatherDTO weatherDTO;
-    private String city;
-    private String lon;
-    private String lat;
+    HttpResponse connection;
+    HttpResponse connection2;
 
     @Given("I am calling the api")
     public void iAmCallingTheApi() {
-        city = "london";
-        lon = "-0.1257";
-        lat = "51.5085";
-        WeatherDTO weatherDTO;
+        connection = ConnectionManager.getConnection("london");
+        connection2 = ConnectionManager.getConnection("-0.1257", "51.5085");
     }
 
     @When("I pass the url")
     public void iPassTheUrl() {
-        weatherDTO = Injector.injectDTO(ConnectionManager.getConnection(city));
+        weatherDTO = Injector.injectDTO(connection);
     }
 
     @Then("I will get the longitude and latitude")
@@ -37,7 +36,7 @@ public class MyStepdefs {
 
     @When("I pass the lon and lat")
     public void iPassTheLonAndLat() {
-        weatherDTO = Injector.injectDTO(ConnectionManager.getConnection(lon, lat));
+        weatherDTO = Injector.injectDTO(connection2);
     }
 
     @Then("I will get the response")
@@ -45,14 +44,9 @@ public class MyStepdefs {
         Assertions.assertNotEquals(null, weatherDTO);
     }
 
-    @Given("I am testing the api")
-    public void iAmTestingTheApi() {
-        city = "london";
-    }
-
     @When("I enter a specific city")
     public void iEnterASpecificCity() {
-        weatherDTO = Injector.injectDTO(ConnectionManager.getConnection(city));
+        weatherDTO = Injector.injectDTO(connection);
     }
 
     @Then("I will find the country it belongs to")
@@ -63,5 +57,45 @@ public class MyStepdefs {
     @Then("I receive the timezone in that city")
     public void iReceiveTheTimezoneInThatCity() {
         Assertions.assertEquals(3600, weatherDTO.getTimezone());
+    }
+
+    @Given("I input the city")
+    public void iInputTheCity() {
+        connection = ConnectionManager.getConnection("london");
+    }
+
+    @When("I get the response")
+    public void iGetTheResponse() {
+        weatherDTO = Injector.injectDTO(connection);
+    }
+
+    @Then("I will see the valid weather id")
+    public void iWillSeeTheValidWeatherId() {
+        Assertions.assertTrue(weatherDTO.checkIDValid());
+    }
+
+    @Then("I will see the weather main")
+    public void iWillSeeTheWeatherMain() {
+//        Assertions.assertTrue(weatherDTO.checkIDValid());
+    }
+
+    @Then("I will see the weather description")
+    public void iWillSeeTheWeatherDescription() {
+//        Assertions.assertTrue(weatherDTO.checkIDValid());
+    }
+
+    @Then("I will see the weather icon")
+    public void iWillSeeTheWeatherIcon() {
+//        Assertions.assertTrue(weatherDTO.checkIDValid());
+    }
+
+    @Then("I will see the valid degree wind")
+    public void iWillSeeTheValidDegreeWind() {
+//        Assertions.assertTrue(weatherDTO.checkIDValid());
+    }
+
+    @Then("I will see the valid cloud")
+    public void iWillSeeTheValidCloud() {
+//        Assertions.assertTrue(weatherDTO.checkIDValid());
     }
 }
