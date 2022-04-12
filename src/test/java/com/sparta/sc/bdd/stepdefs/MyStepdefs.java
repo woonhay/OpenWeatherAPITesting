@@ -76,26 +76,26 @@ public class MyStepdefs {
 
     @Then("I will see the weather main")
     public void iWillSeeTheWeatherMain() {
-//        Assertions.assertTrue(weatherDTO.checkIDValid());
+        Assertions.assertTrue(weatherDTO.checkMainMatchTheID());
     }
 
     @Then("I will see the weather description")
     public void iWillSeeTheWeatherDescription() {
-//        Assertions.assertTrue(weatherDTO.checkIDValid());
+        Assertions.assertTrue(weatherDTO.checkDescriptionMatchTheID());
     }
 
     @Then("I will see the weather icon")
     public void iWillSeeTheWeatherIcon() {
-//        Assertions.assertTrue(weatherDTO.checkIDValid());
+        Assertions.assertTrue(weatherDTO.checkIconMatchTheID());
     }
 
     @Then("I will see the valid degree wind")
     public void iWillSeeTheValidDegreeWind() {
-//        Assertions.assertTrue(weatherDTO.checkIDValid());
+        Assertions.assertTrue(weatherDTO.isDegreeWindValid());
     }
 
     @Then("I will see the valid cloud")
     public void iWillSeeTheValidCloud() {
-//        Assertions.assertTrue(weatherDTO.checkIDValid());
+        Assertions.assertTrue(weatherDTO.isCloudValid());
     }
 }
