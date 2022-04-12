@@ -50,6 +50,23 @@ Feature: Collect the correct data from the API
     When I get the response
     Then I will see the valid cloud
 
+  Scenario: check country is two letters
+    Given I input the city
+    When I get the response
+    Then I will see the country with two letters
+
+  Scenario: check status code equals 200
+    Given I input the city
+    When I get the response
+    Then I will see the status code
+
+  Scenario: check city ID bigger then 0
+    Given I input the city
+    When I get the response
+    Then I will see the city ID
+
+
+
 #  Scenario: get a list of cities
 #    Given I am testing the api
 #    When I enter the country

@@ -98,4 +98,19 @@ public class MyStepdefs {
     public void iWillSeeTheValidCloud() {
         Assertions.assertTrue(weatherDTO.isCloudValid());
     }
+
+    @Then("I will see the country with two letters")
+    public void iWillSeeTheCountryWithTwoLetters() {
+        Assertions.assertTrue(weatherDTO.isCountryTwoLetters());
+    }
+
+    @Then("I will see the status code")
+    public void iWillSeeTheStatusCode() {
+        Assertions.assertTrue(weatherDTO.isStatusCode200());
+    }
+
+    @Then("I will see the city ID")
+    public void iWillSeeTheCityID() {
+        Assertions.assertTrue(weatherDTO.isCityIdBiggerThanO());
+    }
 }
