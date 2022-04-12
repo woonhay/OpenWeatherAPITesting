@@ -193,6 +193,28 @@ public class DTOTest {
         Assertions.assertTrue(response.isTimezoneInRange());
     }
 
+    @Test
+    @DisplayName("check id is in the weather condition id list")
+    void checkIDIsValid() {
+        Assertions.assertTrue(response.checkIDValid());
+    }
 
+    @Test
+    @DisplayName("check the main must match the corresponding ID in weather condition codes")
+    void checkMainMatchCorrespondingID() {
+        Assertions.assertTrue(response.checkMainMatchTheID());
+    }
+
+    @Test
+    @DisplayName("check the description must match the corresponding ID in weather condition codes")
+    void checkDescriptionMatchCorrespondingID() {
+        Assertions.assertTrue(response.checkDescriptionMatchTheID());
+    }
+
+    @Test
+    @DisplayName("check the icon must match the corresponding ID in weather condition codes")
+    void checkIconMatchCorrespondingID() {
+        Assertions.assertTrue(response.checkIconMatchTheID());
+    }
 
 }
