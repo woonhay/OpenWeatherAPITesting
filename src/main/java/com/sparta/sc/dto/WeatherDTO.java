@@ -188,6 +188,10 @@ public class WeatherDTO {
         return Double.parseDouble(lat) == getCoord().getLat();
     }
 
+    public boolean isSameCityId(int cityId){
+        return cityId == getId();
+    }
+
     public boolean isLonValid() {
         return getCoord().getLon() >= -180 && getCoord().getLon() <= 180;
     }
