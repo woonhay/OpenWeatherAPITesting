@@ -38,6 +38,11 @@ public class ConnectionManager {
         return getResponse();
     }
 
+    public static HttpResponse<String> getConnectionCNSC(String cityName, String stateCode){
+        url = BASEURL + "q=" + cityName + "," + stateCode + "&appid=" + key;
+        return getResponse();
+    }
+
     private static HttpResponse<String> getResponse() {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder()

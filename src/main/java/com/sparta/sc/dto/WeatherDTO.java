@@ -196,6 +196,10 @@ public class WeatherDTO {
 
     }
 
+    public boolean isSameStateCode(String stateCode){
+        return stateCode.equals(getSys().getCountry());
+    }
+
     public boolean isLonValid() {
         return getCoord().getLon() >= -180 && getCoord().getLon() <= 180;
     }
