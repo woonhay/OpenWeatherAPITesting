@@ -1,6 +1,7 @@
 package com.sparta.sc;
 
 import com.sparta.sc.dto.WeatherDTO;
+<<<<<<< HEAD
 import com.sparta.sc.utilities.SpeedConverter;
 import com.sparta.sc.utilities.TemperatureConverter;
 import org.junit.jupiter.api.*;
@@ -8,11 +9,19 @@ import org.junit.jupiter.api.*;
 import static com.sparta.sc.ConnectionManager.getConnection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+=======
+import org.junit.jupiter.api.*;
+import static com.sparta.sc.ConnectionManager.getConnection;
+>>>>>>> b4425822d512cb1fd9b3532a88971d1c72dd16d7
 
 public class WeatherDTOByCityIDTests {
 
     private WeatherDTO response;
+<<<<<<< HEAD
     private int cityId = 8084;
+=======
+    private int cityId = 2643743;
+>>>>>>> b4425822d512cb1fd9b3532a88971d1c72dd16d7
 
     @BeforeEach
     void setup() {
@@ -20,6 +29,7 @@ public class WeatherDTOByCityIDTests {
     }
 
     @Test
+<<<<<<< HEAD
     @DisplayName("check response is not null")
     void checkResponseIsNotNull() {
         Assertions.assertNotNull(response);
@@ -32,11 +42,14 @@ public class WeatherDTOByCityIDTests {
     }
 
     @Test
+=======
+>>>>>>> b4425822d512cb1fd9b3532a88971d1c72dd16d7
     @DisplayName("Is city id same as entered")
     void isCityIdSameAsEntered() {
         Assertions.assertTrue(response.isSameCityId(cityId));
     }
 
+<<<<<<< HEAD
     @Test
     @DisplayName("Longitude is Between minus 180 and 180")
     void longitudeIsBetweenMinus180And180() {
@@ -212,4 +225,6 @@ public class WeatherDTOByCityIDTests {
         Assertions.assertTrue(response.isTimezoneInRange());
     }
 
+=======
+>>>>>>> b4425822d512cb1fd9b3532a88971d1c72dd16d7
 }
