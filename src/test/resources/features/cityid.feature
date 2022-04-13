@@ -32,7 +32,7 @@ Feature: Collect the correct data from the API
     Then I will see the base is station
 
   Scenario: Check longitude is Between minus 180 and 180 for city id input
-    Given I input the city
+    Given I input the city id
     When I get the response
     Then I will see the valid longitude
 

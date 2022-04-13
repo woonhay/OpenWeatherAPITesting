@@ -1,12 +1,12 @@
 Feature: Collect the correct data from the API
 
-  @cityNameTests
+  @cityTests
   Scenario: Get a longitude and latitude for city input
     Given I input the city
     When I get the response
     Then I will get the longitude and latitude
 
-  Scenario: Get a response when city name inputted
+  Scenario: Get a response when city inputted
     Given I input the city
     When I get the response
     Then I will get the response
@@ -21,7 +21,7 @@ Feature: Collect the correct data from the API
     When I get the response
     Then I receive the timezone in that city
 
-  Scenario: Check status code equals 200 for city name
+  Scenario: Check status code equals 200 for city
     Given I input the city
     When I get the response
     Then I will see the status code
