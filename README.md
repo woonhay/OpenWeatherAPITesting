@@ -7,6 +7,7 @@
 
 ## 🤝 API : Weather Data
 <h4 align="center"></h4>
+https://openweathermap.org
 <br>
 
 ## 🛠️ Set Up Requirements
