@@ -191,6 +191,10 @@ public class WeatherDTO {
     public boolean isSameCityId(int cityId){
         return cityId == getId();
     }
+    public boolean isSameCity(String city) {
+        return getName().equals(city);
+
+    }
 
     public boolean isLonValid() {
         return getCoord().getLon() >= -180 && getCoord().getLon() <= 180;
