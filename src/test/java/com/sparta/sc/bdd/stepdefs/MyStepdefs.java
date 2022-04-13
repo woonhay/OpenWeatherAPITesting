@@ -27,7 +27,12 @@ public class MyStepdefs {
 
     @Given("I input the city id")
     public void iInputTheCityId() {
-        connection = ConnectionManager.getConnection(8084);
+        connection = ConnectionManager.getConnection(2643743);
+    }
+
+    @Given("I input the city name")
+    public void iInputTheCityName() {
+        connection = ConnectionManager.getConnectionCNSC("London", "GB");
     }
 
     @Given("I input the longitude and latitude")
