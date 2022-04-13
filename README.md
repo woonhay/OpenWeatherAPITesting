@@ -6,9 +6,6 @@
 </p>
 <hr/>
 ## 🤝 API : Weather Data
-## 🛠️ API : Weather Data
-
-
 ## 🛠️ Set Up Requirements
 
 <h4 align="center"></h4>
