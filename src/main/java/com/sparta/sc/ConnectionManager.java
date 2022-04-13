@@ -38,6 +38,11 @@ public class ConnectionManager {
         return getResponse();
     }
 
+    public static HttpResponse<String> getConnection(int Zip, String CountryCode){
+        url = BASEURL + "zip=" + Zip + "," + CountryCode + "&appid=" + key;
+        return getResponse();
+    }
+
     private static HttpResponse<String> getResponse() {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder()

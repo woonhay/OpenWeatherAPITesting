@@ -9,7 +9,7 @@ import java.net.http.HttpResponse;
 
 import static com.sparta.sc.ConnectionManager.*;
 
-public class ConnectioManagerTests {
+public class ConnectionManagerTests {
 
     HttpResponse<String> response = null;
 
@@ -17,14 +17,26 @@ public class ConnectioManagerTests {
 
     @BeforeEach
     void setup() {
-        //  set true to TEST BY CITY set false to TEST BY LON & LAT
-        boolean testByCity = true;
-        if (testByCity) {
-            response = getConnection("london");
-        } else {
-            response = getConnection("-122.08", "37.39");
-        }
 
+        // 1: GET RESPONSE BY CITY NAME
+        // 2: GET RESPONSE BY LON AND LAT
+        // 3: GET RESPONSE BY CITY ID
+        // 4: GET RESPONSE BY ZIP, COUNTRY CODE
+        int choice = 2;
+        switch (choice) {
+            case 1:
+                response = getConnection("london");
+                break;
+            case 2:
+                response = getConnection("-122.08", "37.39");
+                break;
+            case 3:
+                response = getConnection(8084);
+                break;
+            case 4:
+                response = getConnection(94040, "us");
+                break;
+        }
     }
 
     @Test
