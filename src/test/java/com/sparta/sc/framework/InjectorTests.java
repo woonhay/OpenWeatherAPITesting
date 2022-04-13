@@ -82,4 +82,5 @@ public class InjectorTests {
         Assertions.assertEquals(35, weatherDTO.getCoord().getLat());
         Mockito.verify(response, Mockito.times(1)).body();
     }
+
 }
