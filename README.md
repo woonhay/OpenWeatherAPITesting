@@ -11,7 +11,14 @@ https://openweathermap.org
 <br>
 
 ## 👨🏼‍💻 Functionality
-<h4 align="center"></h4>
+<h3 align="center" >
+BDD Navigation Through The API • Validity Tests • Utility Classes
+<br>
+Multiple API Calls • Status Code Checks • Data Ranges
+</h4>
+
+
+
 <br>
 
 ## 🛠️ Set Up Requirements
@@ -34,11 +41,11 @@ https://openweathermap.org
 6) Within the resources directory of the Test directory of the project, create a new file named "api.properties".
 </h4>
 <h4 align="left">
-7) On the first line write ` Key = `
+7) On the first line write :
 </h4><br>
 
 ```java
-key = "";
+key = "Insert API Key Here ...";
 ```
 
 <h4 align="left">
