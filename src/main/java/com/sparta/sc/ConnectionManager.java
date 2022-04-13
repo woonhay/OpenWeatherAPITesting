@@ -32,6 +32,12 @@ public class ConnectionManager {
         return getResponse();
     }
 
+    public static HttpResponse<String> getConnection(int cityiD){
+        String iD = String.valueOf(cityiD);
+        url = BASEURL + "id=" + iD + "&appid=" + key;
+        return getResponse();
+    }
+
     private static HttpResponse<String> getResponse() {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder()
