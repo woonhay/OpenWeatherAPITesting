@@ -6,7 +6,7 @@ import com.sparta.sc.utilities.TemperatureConverter;
 import org.junit.jupiter.api.*;
 
 import static com.sparta.sc.ConnectionManager.getConnection;
-import static com.sparta.sc.ConnectionManager.getConnectionCNSC;
+import static com.sparta.sc.ConnectionManager.getConnectionCNSCCC;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -38,7 +38,7 @@ public class WeatherDTOCommonTests {
                 response = Injector.injectDTO(getConnection(94040,"us"));
                 break;
             case 5:
-                response = Injector.injectDTO(getConnectionCNSC("Murdochville", "CA"));
+                response = Injector.injectDTO(getConnectionCNSCCC("Henderson", "TX", "US"));
 
         }
     }
