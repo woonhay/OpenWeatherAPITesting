@@ -8,6 +8,7 @@ import com.sparta.sc.utilities.TemperatureConverter;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.eo.Do;
 import org.junit.jupiter.api.Assertions;
 
 import java.net.http.HttpResponse;
@@ -20,29 +21,31 @@ public class MyStepdefs {
     private WeatherDTO weatherDTO;
     HttpResponse connection;
 
+
+
     @Given("I input the city")
     public void iInputTheCity() {
-        connection = ConnectionManager.getConnection("london");
+        connection = ConnectionManager.getConnection(Miami.cityName);
     }
 
     @Given("I input the city id")
     public void iInputTheCityId() {
-        connection = ConnectionManager.getConnection(2643743);
+        connection = ConnectionManager.getConnection(Miami.cityId);
     }
 
     @Given("I input the city name")
     public void iInputTheCityName() {
-        connection = ConnectionManager.getConnectionCNSC("London", "GB");
+        connection = ConnectionManager.getConnectionCNSCCC(Miami.cityName, Miami.stateCode, Miami.countryCode);
     }
 
     @Given("I input the longitude and latitude")
     public void iInputTheLongitudeAndLatitude() {
-        connection = ConnectionManager.getConnection("-0.1257", "51.5085");
+        connection = ConnectionManager.getConnection(Miami.lon, Miami.lat);
     }
 
     @Given("I input the zipcode")
     public void iInputTheZipcode() {
-        connection = ConnectionManager.getConnection(94040, "us");
+        connection = ConnectionManager.getConnection(Miami.zipCode, Miami.countryCode);
     }
 
     @When("I get the response")
@@ -52,28 +55,28 @@ public class MyStepdefs {
 
     @Then("I will get the longitude and latitude")
     public void iWillGetTheLongitudeAndLatitude() {
-        Assertions.assertEquals(-122.088, weatherDTO.getCoord().getLon());
-        Assertions.assertEquals(37.3855, weatherDTO.getCoord().getLat());
+        Assertions.assertEquals(Double.parseDouble(Miami.lon), weatherDTO.getCoord().getLon());
+        Assertions.assertEquals(Double.parseDouble(Miami.lat), weatherDTO.getCoord().getLat());
     }
 
     @Then("I will get the city name")
     public void iWillGetTheCityName() {
-        Assertions.assertEquals("London", weatherDTO.getName());
+        Assertions.assertEquals(Miami.cityName, weatherDTO.getName());
     }
 
     @Then("I will get the response")
     public void iWillGetTheResponse() {
-        Assertions.assertNotEquals(null, weatherDTO);
+        Assertions.assertNotNull(weatherDTO);
     }
 
     @Then("I will find the country it belongs to")
     public void iWillFindTheCountryItBelongsTo() {
-        Assertions.assertEquals("US", weatherDTO.getSys().getCountry());
+        Assertions.assertEquals(Miami.countryCode, weatherDTO.getSys().getCountry());
     }
 
     @Then("I receive the timezone in that city")
     public void iReceiveTheTimezoneInThatCity() {
-        Assertions.assertEquals(-25200, weatherDTO.getTimezone());
+        Assertions.assertEquals(Miami.timeZone, weatherDTO.getTimezone());
     }
 
     @Then("I will see the valid weather id")

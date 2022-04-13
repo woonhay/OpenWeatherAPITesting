@@ -1,11 +1,6 @@
 Feature: Collect the correct data from the API passing zipcode and country code
 
   @zipcodeTests
-  Scenario: Get a longitude and latitude for city input
-    Given I input the zipcode
-    When I get the response
-    Then I will get the longitude and latitude
-
   Scenario: Get a response when zipcode and country code are inputted
     Given I input the zipcode
     When I get the response
