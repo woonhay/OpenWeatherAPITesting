@@ -20,13 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MyStepdefs {
     private WeatherDTO weatherDTO;
     HttpResponse connection;
-    HttpResponse connection2;
-
-    @Given("I am calling the api")
-    public void iAmCallingTheApi() {
-        connection = ConnectionManager.getConnection("london");
-        connection2 = ConnectionManager.getConnection("-0.1257", "51.5085");
-    }
 
     @When("I pass the url")
     public void iPassTheUrl() {
@@ -39,19 +32,9 @@ public class MyStepdefs {
         Assertions.assertEquals(51.5085, weatherDTO.getCoord().getLat());
     }
 
-    @When("I pass the lon and lat")
-    public void iPassTheLonAndLat() {
-        weatherDTO = Injector.injectDTO(connection2);
-    }
-
     @Then("I will get the response")
     public void iWillGetTheResponse() {
         Assertions.assertNotEquals(null, weatherDTO);
-    }
-
-    @When("I enter a specific city")
-    public void iEnterASpecificCity() {
-        weatherDTO = Injector.injectDTO(connection);
     }
 
     @Then("I will find the country it belongs to")
@@ -67,6 +50,11 @@ public class MyStepdefs {
     @Given("I input the city")
     public void iInputTheCity() {
         connection = ConnectionManager.getConnection("london");
+    }
+
+    @Given("I input the long and lat")
+    public void iInputTheLongAndLat() {
+        connection = ConnectionManager.getConnection("-0.1257", "51.5085");
     }
 
     @When("I get the response")
