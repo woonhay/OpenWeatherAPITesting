@@ -1,4 +1,4 @@
-package com.sparta.sc.bdd;
+package com.sparta.sc;
 
 import com.sparta.sc.Injector;
 import com.sparta.sc.dto.WeatherDTO;

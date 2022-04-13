@@ -280,8 +280,8 @@ public class WeatherDTO {
         return getCod() == 200;
     }
 
-    public boolean isCityIdBiggerThanO() {
-        return getId() > 0;
+    public boolean isCityIdBiggerAndEqualToO() {
+        return getId() >= 0;
     }
 
     //WeatherDTOM
