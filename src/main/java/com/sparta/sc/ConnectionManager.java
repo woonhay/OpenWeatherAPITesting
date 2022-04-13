@@ -38,8 +38,13 @@ public class ConnectionManager {
         return getResponse();
     }
 
+    public static HttpResponse<String> getConnectionCNSC(String cityName, String stateCode){
+        url = BASEURL + "q=" + cityName + "," + stateCode + "&appid=" + key;
+        return getResponse();
+    }
     public static HttpResponse<String> getConnection(int Zip, String CountryCode){
         url = BASEURL + "zip=" + Zip + "," + CountryCode + "&appid=" + key;
+
         return getResponse();
     }
 
