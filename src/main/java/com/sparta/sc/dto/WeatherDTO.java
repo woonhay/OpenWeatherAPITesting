@@ -188,8 +188,12 @@ public class WeatherDTO {
         return Double.parseDouble(lat) == getCoord().getLat();
     }
 
+    public boolean isSameCityId(int cityId){
+        return cityId == getId();
+    }
     public boolean isSameCity(String city) {
         return getName().equals(city);
+
     }
 
     public boolean isLonValid() {
