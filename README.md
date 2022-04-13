@@ -6,8 +6,8 @@
 </p>
 
 ## 🤝 API : Weather Data
-<h4 align="center"></h4>
-https://openweathermap.org
+<h3 align="center">https://openweathermap.org</h4>
+
 <br>
 
 ## 👨🏼‍💻 Functionality
