@@ -20,6 +20,7 @@ public class WeatherDTOCommonTests {
         // 1: GET RESPONSE BY CITY NAME
         // 2: GET RESPONSE BY LON AND LAT
         // 3: GET RESPONSE BY CITY ID
+        // 4: GET RESPONSE BY ZIP, COUNTRY CODE
         // 5: GET RESPONSE BY CITY NAME AND STATE CODE
         int choice = 5;
 
@@ -32,8 +33,13 @@ public class WeatherDTOCommonTests {
                 break;
             case 3:
                 response = Injector.injectDTO(getConnection(2643743));
+                break;
+            case 4:
+                response = Injector.injectDTO(getConnection(94040,"us"));
+                break;
             case 5:
                 response = Injector.injectDTO(getConnectionCNSC("Murdochville", "CA"));
+
         }
     }
 

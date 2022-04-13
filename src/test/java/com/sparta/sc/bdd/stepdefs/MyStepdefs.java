@@ -3,6 +3,7 @@ package com.sparta.sc.bdd.stepdefs;
 import com.sparta.sc.ConnectionManager;
 import com.sparta.sc.dto.WeatherDTO;
 import com.sparta.sc.Injector;
+import com.sparta.sc.utilities.SpeedConverter;
 import com.sparta.sc.utilities.TemperatureConverter;
 import io.cucumber.java.Before;
 import io.cucumber.java.bs.A;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Assumptions;
 
 import java.net.http.HttpResponse;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -21,8 +23,18 @@ public class MyStepdefs {
     private WeatherDTO weatherDTO;
     HttpResponse connection;
 
-    @When("I pass the url")
-    public void iPassTheUrl() {
+    @Given("I input the city")
+    public void iInputTheCity() {
+        connection = ConnectionManager.getConnection("london");
+    }
+
+    @Given("I input the longitude and latitude")
+    public void iInputTheLongitudeAndLatitude() {
+        connection = ConnectionManager.getConnection("-0.1257", "51.5085");
+    }
+
+    @When("I get the response")
+    public void iGetTheResponse() {
         weatherDTO = Injector.injectDTO(connection);
     }
 
@@ -30,6 +42,11 @@ public class MyStepdefs {
     public void iWillGetTheLongitudeAndLatitude() {
         Assertions.assertEquals(-0.1257, weatherDTO.getCoord().getLon());
         Assertions.assertEquals(51.5085, weatherDTO.getCoord().getLat());
+    }
+
+    @Then("I will get the city name")
+    public void iWillGetTheCityName() {
+        Assertions.assertEquals("London", weatherDTO.getName());
     }
 
     @Then("I will get the response")
@@ -45,21 +62,6 @@ public class MyStepdefs {
     @Then("I receive the timezone in that city")
     public void iReceiveTheTimezoneInThatCity() {
         Assertions.assertEquals(3600, weatherDTO.getTimezone());
-    }
-
-    @Given("I input the city")
-    public void iInputTheCity() {
-        connection = ConnectionManager.getConnection("london");
-    }
-
-    @Given("I input the long and lat")
-    public void iInputTheLongAndLat() {
-        connection = ConnectionManager.getConnection("-0.1257", "51.5085");
-    }
-
-    @When("I get the response")
-    public void iGetTheResponse() {
-        weatherDTO = Injector.injectDTO(connection);
     }
 
     @Then("I will see the valid weather id")
@@ -85,6 +87,28 @@ public class MyStepdefs {
     @Then("I will see the valid degree wind")
     public void iWillSeeTheValidDegreeWind() {
         Assertions.assertTrue(weatherDTO.isDegreeWindValid());
+    }
+
+    @Then("I will see the mph in meters per second for wind speed")
+    public void iWillSeeTheMphInMetersPerSecondForWindSpeed() {
+        double windInMps = SpeedConverter.mphToMps(weatherDTO.getWind().getSpeed());
+        Assertions.assertEquals(windInMps, weatherDTO.getWindInMps());
+    }
+
+    @Then("I will see the mps in miles per hour for wind speed")
+    public void iWillSeeTheMpsInMilesPerHourForWindSpeed() {
+        double windInMph = SpeedConverter.mpsToMph(weatherDTO.getWind().getSpeed());
+        Assertions.assertEquals(windInMph, weatherDTO.getWindInMph());
+    }
+
+    @Then("I will see the mph in meters per second for gust speed")
+    public void iWillSeeTheMphInMetersPerSecondForGustSpeed() {
+        Assertions.assertEquals(weatherDTO.getWind().getGust() / 2.237, weatherDTO.getGustInMps());
+    }
+
+    @Then("I will see the mps in miles per hour for gust speed")
+    public void iWillSeeTheMpsInMilesPerHourForGustSpeed() {
+        Assertions.assertEquals(weatherDTO.getWind().getGust() * 2.237, weatherDTO.getGustInMph());
     }
 
     @Then("I will see the valid cloud")
@@ -140,11 +164,6 @@ public class MyStepdefs {
     @Then("I will see the valid rain")
     public void iWillSeeTheValidRain() {
         Assertions.assertTrue(weatherDTO.isDegreeWindValid());
-    }
-
-    @Then("I will see the weather name exists")
-    public void iWillSeeTheWeatherNameExists() {
-        Assumptions.assumeTrue(weatherDTO.isRainValid());
     }
 
     @Then("I will see the weather name which is not null")

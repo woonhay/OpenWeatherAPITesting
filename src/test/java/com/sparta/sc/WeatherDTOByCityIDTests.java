@@ -1,13 +1,17 @@
 package com.sparta.sc;
 
 import com.sparta.sc.dto.WeatherDTO;
+
 import org.junit.jupiter.api.*;
+
 import static com.sparta.sc.ConnectionManager.getConnection;
+
 
 public class WeatherDTOByCityIDTests {
 
     private WeatherDTO response;
-    private int cityId = 2643743;
+
+    private int cityId = 8084;
 
     @BeforeEach
     void setup() {
@@ -19,5 +23,4 @@ public class WeatherDTOByCityIDTests {
     void isCityIdSameAsEntered() {
         Assertions.assertTrue(response.isSameCityId(cityId));
     }
-
 }
