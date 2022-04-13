@@ -6,6 +6,7 @@ import com.sparta.sc.utilities.TemperatureConverter;
 import org.junit.jupiter.api.*;
 
 import static com.sparta.sc.ConnectionManager.getConnection;
+import static com.sparta.sc.ConnectionManager.getConnectionCNSC;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -16,11 +17,12 @@ public class WeatherDTOCommonTests {
     @BeforeEach
     void setup() {
 
-        // 1: GET RESPONSE BY CITY
+        // 1: GET RESPONSE BY CITY NAME
         // 2: GET RESPONSE BY LON AND LAT
         // 3: GET RESPONSE BY CITY ID
         // 4: GET RESPONSE BY ZIP, COUNTRY CODE
-        int choice = 2;
+        // 5: GET RESPONSE BY CITY NAME AND STATE CODE
+        int choice = 5;
 
         switch (choice) {
             case 1:
@@ -29,12 +31,15 @@ public class WeatherDTOCommonTests {
             case 2:
                 response = Injector.injectDTO(getConnection("-75.4557", "43.2128"));
                 break;
-            case 3 :
-                response = Injector.injectDTO(getConnection(8084));
+            case 3:
+                response = Injector.injectDTO(getConnection(2643743));
                 break;
             case 4:
                 response = Injector.injectDTO(getConnection(94040,"us"));
                 break;
+            case 5:
+                response = Injector.injectDTO(getConnectionCNSC("Murdochville", "CA"));
+
         }
     }
 
