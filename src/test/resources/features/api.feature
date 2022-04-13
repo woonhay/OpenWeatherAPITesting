@@ -1,7 +1,32 @@
 Feature: Collect the correct data from the API
 
-  Scenario: check status code equals 200
+  Scenario: get a longitude and latitude
     Given I input the city
+    When I pass the url
+    Then I will get the longitude and latitude
+
+  Scenario: get a response
+    Given I input the city
+    When I get the response
+    Then I will get the response
+
+  Scenario: find the country it belongs to
+    Given I input the city
+    When I get the response
+    Then I will find the country it belongs to
+
+  Scenario: find the timezone of a city
+    Given I input the city
+    When I get the response
+    Then I receive the timezone in that city
+
+  Scenario: check status code equals 200 for city name
+    Given I input the city
+    When I get the response
+    Then I will see the status code
+
+  Scenario: check status code equals 200 for the coordinates
+    Given I input the long and lat
     When I get the response
     Then I will see the status code
 
@@ -22,6 +47,16 @@ Feature: Collect the correct data from the API
 
   Scenario: Check if name weather is not empty
     Given I input the city
+    When I get the response
+    Then I will see the name weather which is not empty
+
+  Scenario: Check if name weather is not empty for the coordinates
+    Given I input the long and lat
+    When I get the response
+    Then I will see the name weather which is not empty
+
+  Scenario: Check if name weather is not empty long and lat
+    Given I input the long and lat
     When I get the response
     Then I will see the name weather which is not empty
 
@@ -157,28 +192,6 @@ Feature: Collect the correct data from the API
     Given I input the city
     When I get the response
     Then I will see the weather icon
-
-
-
-  Scenario: get a longitude and latitude
-    Given I am calling the api
-    When I pass the url
-    Then I will get the longitude and latitude
-
-  Scenario: get a response
-    Given I am calling the api
-    When I pass the lon and lat
-    Then I will get the response
-
-  Scenario: find the country it belongs to
-    Given I am calling the api
-    When I enter a specific city
-    Then I will find the country it belongs to
-
-  Scenario: find the timezone of a city
-    Given I am calling the api
-    When I enter a specific city
-    Then I receive the timezone in that city
 
 #  Scenario: get a list of cities
 #    Given I am testing the api
