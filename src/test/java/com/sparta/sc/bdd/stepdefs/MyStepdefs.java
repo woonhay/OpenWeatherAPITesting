@@ -5,13 +5,10 @@ import com.sparta.sc.dto.WeatherDTO;
 import com.sparta.sc.Injector;
 import com.sparta.sc.utilities.SpeedConverter;
 import com.sparta.sc.utilities.TemperatureConverter;
-import io.cucumber.java.Before;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
 
 import java.net.http.HttpResponse;
 
@@ -45,7 +42,7 @@ public class MyStepdefs {
 
     @Given("I input the zipcode")
     public void iInputTheZipcode() {
-        connection = ConnectionManager.getConnection("-0.1257", "51.5085");
+        connection = ConnectionManager.getConnection(94040, "us");
     }
 
     @When("I get the response")
@@ -55,8 +52,8 @@ public class MyStepdefs {
 
     @Then("I will get the longitude and latitude")
     public void iWillGetTheLongitudeAndLatitude() {
-        Assertions.assertEquals(-0.1257, weatherDTO.getCoord().getLon());
-        Assertions.assertEquals(51.5085, weatherDTO.getCoord().getLat());
+        Assertions.assertEquals(-122.088, weatherDTO.getCoord().getLon());
+        Assertions.assertEquals(37.3855, weatherDTO.getCoord().getLat());
     }
 
     @Then("I will get the city name")
@@ -71,12 +68,12 @@ public class MyStepdefs {
 
     @Then("I will find the country it belongs to")
     public void iWillFindTheCountryItBelongsTo() {
-        Assertions.assertEquals("GB", weatherDTO.getSys().getCountry());
+        Assertions.assertEquals("US", weatherDTO.getSys().getCountry());
     }
 
     @Then("I receive the timezone in that city")
     public void iReceiveTheTimezoneInThatCity() {
-        Assertions.assertEquals(3600, weatherDTO.getTimezone());
+        Assertions.assertEquals(-25200, weatherDTO.getTimezone());
     }
 
     @Then("I will see the valid weather id")
@@ -143,7 +140,7 @@ public class MyStepdefs {
 
     @Then("I will see the city ID")
     public void iWillSeeTheCityID() {
-        Assertions.assertTrue(weatherDTO.isCityIdBiggerThanO());
+        Assertions.assertTrue(weatherDTO.isCityIdBiggerAndEqualToO());
     }
 
     @Then("I will see the base is station")

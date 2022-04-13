@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.sparta.sc.ConnectionManager.getConnectionCNSCCC;
 
 public class WeatherDTOByCityNStateCTests {
 
     private WeatherDTO response;
+
     private String cityName = "Henderson";
     private String stateCode = "TX";
     private String countryCode = "US";
@@ -29,7 +31,7 @@ public class WeatherDTOByCityNStateCTests {
     @Test
     @DisplayName("Is country code same as entered")
     void isCountryCodeSameAsEntered() {
-        Assertions.assertTrue(response.isSameCountryCode());
+        Assertions.assertTrue(response.isSameCountryCode("US"));
     }
 
 }

@@ -22,7 +22,7 @@ public class WeatherDTOCommonTests {
         // 3: GET RESPONSE BY CITY ID
         // 4: GET RESPONSE BY ZIP, COUNTRY CODE
 
-        int choice = 5;
+        int choice = 4;
 
         switch (choice) {
             case 1:
@@ -158,8 +158,8 @@ public class WeatherDTOCommonTests {
 
     @Test
     @DisplayName("Check city id is greater than zero")
-    void checkCityIdIsGreaterThanZero() {
-        Assertions.assertTrue(response.isCityIdBiggerThanO());
+    void checkCityIdIsGreaterAndEqualToZero() {
+        Assertions.assertTrue(response.isCityIdBiggerAndEqualToO());
     }
 
     @Test
