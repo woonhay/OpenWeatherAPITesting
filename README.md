@@ -2,7 +2,7 @@
 
 <h1 align="center">Open Weather API Testing <img src="https://media.giphy.com/media/ZXxKKHVzgSzDOUsJw3/giphy.gif" width="40"></h1>
 <p align="center">
-  <a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?center=true&width=500&height=100&lines=API+Weather+Data;Easy+API+Calls+%2C+Easy+Methods%2C+Weather+Data;Junit+%26+Jackson;Ham-Crest+%2C+Mockito+%26+Cucumber"></a>
+  <a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?size=40&duration=4000&center=true&multiline=true&width=1000&height=150&lines=API+Weather+Data;Easy+API+Calls+%2C+Easy+Methods+%2C+Weather+Data;Junit+%2C+Jackson+%2C+Mockito"></a>
 </p>
 
 ## 🤝 API : Weather Data
