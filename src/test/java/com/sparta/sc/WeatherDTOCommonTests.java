@@ -20,7 +20,7 @@ public class WeatherDTOCommonTests {
         // 2: GET RESPONSE BY LON AND LAT
         // 3: GET RESPONSE BY CITY ID
         // 4: GET RESPONSE BY ZIP, COUNTRY CODE
-        int choice = 2;
+        int choice = 3;
 
         switch (choice) {
             case 1:
