@@ -10,6 +10,10 @@
 https://openweathermap.org
 <br>
 
+## 👨🏼‍💻 Functionality
+<h4 align="center"></h4>
+<br>
+
 ## 🛠️ Set Up Requirements
 <h4 align="left">
 1) Head over to https://openweathermap.org and click API. Register a new account or sign in to receive your first API key. This will take a few minutes to hours to arrive in your email.
@@ -30,8 +34,13 @@ https://openweathermap.org
 6) Within the resources directory of the Test directory of the project, create a new file named "api.properties".
 </h4>
 <h4 align="left">
-7) On the first line write `key=[your API key]`.
-</h4>
+7) On the first line write ` Key = `
+</h4><br>
+
+```java
+key = "";
+```
+
 <h4 align="left">
 8) Add "api.properties" to your git ignore if planning on pushing to GitHub to avoid security issues.
 </h4>
@@ -40,9 +49,6 @@ https://openweathermap.org
 </h4>
 <br>
 
-## 👨🏼‍💻 Functionality
-<h4 align="center"></h4>
-<br>
 
 ## 👨🏻‍🔧 Creators
 <h4 align="center">Woon Hay Ryan Leung  ||  Simone Conigliaro ||  Sam Smith  ||  Mujtaba Moosavi ||  Jamal Lindo</h4>
