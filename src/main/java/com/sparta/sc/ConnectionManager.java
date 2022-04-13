@@ -43,11 +43,6 @@ public class ConnectionManager {
         return getResponse();
     }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 811d165fe9e8d20f1bee8cdfaf1eafd82adccf49
     private static HttpResponse<String> getResponse() {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder()
