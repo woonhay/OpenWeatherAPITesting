@@ -58,7 +58,7 @@ key = "Insert API Key Here ...";
 
 
 ## 👨🏻‍🔧 Creators
-<h4 align="center">Woon Hay Ryan Leung  ||  Simone Conigliaro ||  Sam Smith  ||  Mujtaba Moosavi ||  Jamal Lindo</h4>
+<h4 align="center"><a href="https://github.com/woonhay">Woon Hay Ryan Leung</a>  ||  <a href="https://github.com/simoneconigliarosparta">Simone Conigliaro</a> ||  <a href="https://github.com/sams4566">Sam Smith </a> ||  <a href="https://github.com/mujm4tic">Mujtaba Moosavi</a> ||  <a href="https://github.com/JamalLindo">Jamal Lindo</a></h4>
 <br>
 <h4 align="center"><img src="https://raw.githubusercontent.com/Aniket965/Aniket965/master/pacman.svg?sanitize=true" width="200" height="200" ></h4>
 
