@@ -9,7 +9,7 @@ import java.net.http.HttpResponse;
 
 import static com.sparta.sc.ConnectionManager.*;
 
-public class ConnectioManagerTests {
+public class ConnectionManagerTests {
 
     HttpResponse<String> response = null;
 
