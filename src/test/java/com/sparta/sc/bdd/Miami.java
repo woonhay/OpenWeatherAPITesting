@@ -1,4 +1,4 @@
-package com.sparta.sc.bdd.stepdefs;
+package com.sparta.sc.bdd;
 
 public interface Miami {
 

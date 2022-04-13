@@ -1,4 +1,6 @@
-package com.sparta.sc;
+package com.sparta.sc.framework;
+
+import com.sparta.sc.PropertiesLoader;
 
 import java.io.IOException;
 import java.net.URI;

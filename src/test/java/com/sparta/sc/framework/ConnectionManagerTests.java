@@ -1,4 +1,4 @@
-package com.sparta.sc;
+package com.sparta.sc.framework;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.net.http.HttpResponse;
 
-import static com.sparta.sc.ConnectionManager.*;
+import static com.sparta.sc.framework.ConnectionManager.*;
 
 public class ConnectionManagerTests {
 

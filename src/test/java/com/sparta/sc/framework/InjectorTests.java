@@ -1,6 +1,6 @@
-package com.sparta.sc;
+package com.sparta.sc.framework;
 
-import com.sparta.sc.dto.WeatherDTO;
+import com.sparta.sc.framework.dto.WeatherDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

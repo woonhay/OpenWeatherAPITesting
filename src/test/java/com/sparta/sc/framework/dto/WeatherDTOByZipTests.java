@@ -1,11 +1,9 @@
-package com.sparta.sc;
+package com.sparta.sc.framework.dto;
 
-import com.sparta.sc.dto.WeatherDTO;
-import com.sparta.sc.utilities.SpeedConverter;
-import com.sparta.sc.utilities.TemperatureConverter;
+import com.sparta.sc.framework.Injector;
 import org.junit.jupiter.api.*;
 
-import static com.sparta.sc.ConnectionManager.getConnection;
+import static com.sparta.sc.framework.ConnectionManager.getConnection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

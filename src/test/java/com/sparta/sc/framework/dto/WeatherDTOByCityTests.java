@@ -1,12 +1,12 @@
-package com.sparta.sc;
+package com.sparta.sc.framework.dto;
 
-import com.sparta.sc.dto.WeatherDTO;
+import com.sparta.sc.framework.Injector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.sparta.sc.ConnectionManager.getConnection;
+import static com.sparta.sc.framework.ConnectionManager.getConnection;
 
 public class WeatherDTOByCityTests {
 

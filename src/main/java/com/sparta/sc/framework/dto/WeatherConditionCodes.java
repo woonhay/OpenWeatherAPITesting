@@ -1,4 +1,4 @@
-package com.sparta.sc.dto;
+package com.sparta.sc.framework.dto;
 
 import java.util.ArrayList;
 import java.util.List;

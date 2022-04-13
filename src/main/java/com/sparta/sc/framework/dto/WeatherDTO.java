@@ -1,4 +1,4 @@
-package com.sparta.sc.dto;
+package com.sparta.sc.framework.dto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

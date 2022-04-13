@@ -1,14 +1,14 @@
 package com.sparta.sc.bdd.stepdefs;
 
-import com.sparta.sc.ConnectionManager;
-import com.sparta.sc.dto.WeatherDTO;
-import com.sparta.sc.Injector;
+import com.sparta.sc.framework.ConnectionManager;
+import com.sparta.sc.bdd.Miami;
+import com.sparta.sc.framework.dto.WeatherDTO;
+import com.sparta.sc.framework.Injector;
 import com.sparta.sc.utilities.SpeedConverter;
 import com.sparta.sc.utilities.TemperatureConverter;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.eo.Do;
 import org.junit.jupiter.api.Assertions;
 
 import java.net.http.HttpResponse;
