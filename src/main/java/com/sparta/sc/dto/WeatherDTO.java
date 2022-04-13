@@ -191,13 +191,9 @@ public class WeatherDTO {
     public boolean isSameCityId(int cityId){
         return cityId == getId();
     }
+
     public boolean isSameCity(String city) {
         return getName().equals(city);
-
-    }
-
-    public boolean isSameStateCode(String stateCode){
-        return stateCode.equals(getSys().getCountry());
     }
 
     public boolean isLonValid() {
