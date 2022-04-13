@@ -3,7 +3,6 @@ package com.sparta.sc;
 import com.sparta.sc.dto.WeatherDTO;
 import com.sparta.sc.utilities.SpeedConverter;
 import com.sparta.sc.utilities.TemperatureConverter;
-import org.junit.Assume;
 import org.junit.jupiter.api.*;
 
 import static com.sparta.sc.ConnectionManager.getConnection;
@@ -118,6 +117,20 @@ public class WeatherDTOByLonLatTests {
     void checkCloudLevelBetween0And100() {
         // not all the calls return clouds
         Assumptions.assumeTrue(response.isCloudValid());
+    }
+
+    @Test
+    @DisplayName("Check rain is valid")
+    void checkRainIsValid() {
+        // not all responses contain rain
+        Assumptions.assumeTrue(response.isRainValid());
+    }
+
+    @Test
+    @DisplayName("Check snow is valid")
+    void checkSnowIsValid() {
+        // not all responses contain snow
+        Assumptions.assumeTrue(response.isSnowValid());
     }
 
     @Test

@@ -86,6 +86,10 @@ public class WeatherDTO {
         return rain;
     }
 
+    public Snow getSnow() {
+        return snow;
+    }
+
     public Sys getSys() {
         return sys;
     }
@@ -233,6 +237,12 @@ public class WeatherDTO {
     public boolean isRainValid(){
         if(getRain()!=null){
             return getRain().getJsonMember1h()>= 0 && getRain().getJsonMember1h() <= 320 || getRain().getJsonMember3h() >= 0 && getRain().getJsonMember3h() <= 1000;
+        } return false;
+    }
+
+    public boolean isSnowValid(){
+        if(getSnow()!=null){
+            return getSnow().getJsonMember1h()>= 0 && getSnow().getJsonMember1h() <= 107 || getSnow().getJsonMember3h() >= 0 && getSnow().getJsonMember3h() <= 320;
         } return false;
     }
 
