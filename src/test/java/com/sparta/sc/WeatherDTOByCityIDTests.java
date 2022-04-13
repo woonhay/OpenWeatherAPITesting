@@ -9,7 +9,7 @@ import static com.sparta.sc.ConnectionManager.getConnection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class WeatherDTOCityIDTests {
+public class WeatherDTOByCityIDTests {
 
     private WeatherDTO response;
     private int cityId = 8084;

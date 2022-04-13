@@ -18,6 +18,8 @@ public class WeatherDTOCommonTests {
 
         // 1: GET RESPONSE BY CITY
         // 2: GET RESPONSE BY LON AND LAT
+        // 3: GET RESPONSE BY CITY ID
+        // 4: GET RESPONSE BY ZIP, COUNTRY CODE
         int choice = 2;
 
         switch (choice) {
@@ -26,6 +28,12 @@ public class WeatherDTOCommonTests {
                 break;
             case 2:
                 response = Injector.injectDTO(getConnection("-75.4557", "43.2128"));
+                break;
+            case 3 :
+                response = Injector.injectDTO(getConnection(8084));
+                break;
+            case 4:
+                response = Injector.injectDTO(getConnection(94040,"us"));
                 break;
         }
     }
