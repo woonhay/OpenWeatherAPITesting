@@ -1,4 +1,4 @@
-# OpenWeatherAPITesting
+# Open Weather API Testing
 
 <h1 align="center">Open Weather API Testing <img src="https://media.giphy.com/media/ZXxKKHVzgSzDOUsJw3/giphy.gif" width="40"></h1>
 <p align="center">
