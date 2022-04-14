@@ -1,4 +1,4 @@
-package com.sparta.sc.dto;
+package com.sparta.sc.framework.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -22,6 +22,12 @@ public class Main{
 	@JsonProperty("temp_max")
 	private double tempMax;
 
+	@JsonProperty("sea_level")
+	private int seaLevel;
+
+	@JsonProperty("grnd_level")
+	private int groundLevel;
+
 	public double getTemp(){
 		return temp;
 	}
@@ -44,5 +50,13 @@ public class Main{
 
 	public double getTempMax(){
 		return tempMax;
+	}
+
+	public int getSeaLevel() {
+		return seaLevel;
+	}
+
+	public int getGroundLevel() {
+		return groundLevel;
 	}
 }

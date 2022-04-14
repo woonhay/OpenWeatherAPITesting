@@ -1,4 +1,4 @@
-package com.sparta.sc.dto;
+package com.sparta.sc.framework.dto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -84,6 +84,10 @@ public class WeatherDTO {
 
     public Rain getRain() {
         return rain;
+    }
+
+    public Snow getSnow() {
+        return snow;
     }
 
     public Sys getSys() {
@@ -184,6 +188,18 @@ public class WeatherDTO {
         return Double.parseDouble(lat) == getCoord().getLat();
     }
 
+    public boolean isSameCityId(int cityId){
+        return cityId == getId();
+    }
+
+    public boolean isSameCity(String city) {
+        return getName().equals(city);
+    }
+
+    public boolean isSameCountryCode(String country){
+        return getSys().getCountry().equalsIgnoreCase(country);
+    }
+
     public boolean isLonValid() {
         return getCoord().getLon() >= -180 && getCoord().getLon() <= 180;
     }
@@ -236,6 +252,12 @@ public class WeatherDTO {
         } return false;
     }
 
+    public boolean isSnowValid(){
+        if(getSnow()!=null){
+            return getSnow().getJsonMember1h()>= 0 && getSnow().getJsonMember1h() <= 107 || getSnow().getJsonMember3h() >= 0 && getSnow().getJsonMember3h() <= 320;
+        } return false;
+    }
+
     public boolean isNameEmpty() {
         return getName().equals("");
     }
@@ -252,8 +274,8 @@ public class WeatherDTO {
         return getCod() == 200;
     }
 
-    public boolean isCityIdBiggerThanO() {
-        return getId() > 0;
+    public boolean isCityIdBiggerAndEqualToO() {
+        return getId() >= 0;
     }
 
     //WeatherDTOM

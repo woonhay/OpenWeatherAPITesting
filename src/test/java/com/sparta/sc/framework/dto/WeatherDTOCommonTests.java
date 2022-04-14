@@ -1,24 +1,47 @@
-package com.sparta.sc;
+package com.sparta.sc.framework.dto;
 
-import com.sparta.sc.dto.WeatherDTO;
+import com.sparta.sc.framework.Injector;
 import com.sparta.sc.utilities.SpeedConverter;
 import com.sparta.sc.utilities.TemperatureConverter;
-import org.junit.Assume;
 import org.junit.jupiter.api.*;
 
-import static com.sparta.sc.ConnectionManager.getConnection;
+import static com.sparta.sc.framework.ConnectionManager.getConnection;
+import static com.sparta.sc.framework.ConnectionManager.getConnectionCNSCCC;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class WeatherDTOByLonLatTests {
+public class WeatherDTOCommonTests {
 
-    private WeatherDTO response;
-    private String lon = "-75.4557";
-    private String lat = "43.2128";
+    WeatherDTO response;
 
     @BeforeEach
     void setup() {
-        response = Injector.injectDTO(getConnection(lon, lat));
+
+        // 1: GET RESPONSE BY CITY NAME
+        // 2: GET RESPONSE BY LON AND LAT
+        // 3: GET RESPONSE BY CITY ID
+        // 4: GET RESPONSE BY ZIP, COUNTRY CODE
+        // 5: GER RESPONSE BY CITY NAME, STATE CODE AND COUNTRY CODE
+
+        int choice = 5;
+
+        switch (choice) {
+            case 1:
+                response = Injector.injectDTO(getConnection("London"));
+                break;
+            case 2:
+                response = Injector.injectDTO(getConnection("-75.4557", "43.2128"));
+                break;
+            case 3:
+                response = Injector.injectDTO(getConnection(2643743));
+                break;
+            case 4:
+                response = Injector.injectDTO(getConnection(94040,"us"));
+                break;
+            case 5:
+                response = Injector.injectDTO(getConnectionCNSCCC("Henderson", "TX", "US"));
+
+        }
     }
 
     @Test
@@ -34,15 +57,9 @@ public class WeatherDTOByLonLatTests {
     }
 
     @Test
-    @DisplayName("Is lon same as entered")
-    void isLonSameAsEntered() {
-        Assertions.assertTrue(response.isSameLon(lon));
-    }
-
-    @Test
-    @DisplayName("Is lat same as entered")
-    void isLatSameAsEntered() {
-        Assertions.assertTrue(response.isSameLat(lat));
+    @DisplayName("Check base is station")
+    void checkBaseIsStation() {
+        Assertions.assertEquals("stations", response.getBase());
     }
 
     @Test
@@ -121,6 +138,20 @@ public class WeatherDTOByLonLatTests {
     }
 
     @Test
+    @DisplayName("Check rain is valid")
+    void checkRainIsValid() {
+        // not all responses contain rain
+        Assumptions.assumeTrue(response.isRainValid());
+    }
+
+    @Test
+    @DisplayName("Check snow is valid")
+    void checkSnowIsValid() {
+        // not all responses contain snow
+        Assumptions.assumeTrue(response.isSnowValid());
+    }
+
+    @Test
     @DisplayName("Check if country has two letters")
     void checkIfCountryHasTwoLetters() {
         Assertions.assertTrue(response.isCountryTwoLetters());
@@ -128,8 +159,8 @@ public class WeatherDTOByLonLatTests {
 
     @Test
     @DisplayName("Check city id is greater than zero")
-    void checkCityIdIsGreaterThanZero() {
-        Assertions.assertTrue(response.isCityIdBiggerThanO());
+    void checkCityIdIsGreaterAndEqualToZero() {
+        Assertions.assertTrue(response.isCityIdBiggerAndEqualToO());
     }
 
     @Test
@@ -204,6 +235,30 @@ public class WeatherDTOByLonLatTests {
     @DisplayName("Check if timezone is in range")
     void checkIfTimezoneIsInRange() {
         Assertions.assertTrue(response.isTimezoneInRange());
+    }
+
+    @Test
+    @DisplayName("check id is in the weather condition id list")
+    void checkIDIsValid() {
+        Assertions.assertTrue(response.checkIDValid());
+    }
+
+    @Test
+    @DisplayName("check the main must match the corresponding ID in weather condition codes")
+    void checkMainMatchCorrespondingID() {
+        Assertions.assertTrue(response.checkMainMatchTheID());
+    }
+
+    @Test
+    @DisplayName("check the description must match the corresponding ID in weather condition codes")
+    void checkDescriptionMatchCorrespondingID() {
+        Assertions.assertTrue(response.checkDescriptionMatchTheID());
+    }
+
+    @Test
+    @DisplayName("check the icon must match the corresponding ID in weather condition codes")
+    void checkIconMatchCorrespondingID() {
+        Assertions.assertTrue(response.checkIconMatchTheID());
     }
 
 }

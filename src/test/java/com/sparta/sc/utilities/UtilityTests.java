@@ -1,4 +1,4 @@
-package com.sparta.sc;
+package com.sparta.sc.utilities;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,6 @@
-package com.sparta.sc;
+package com.sparta.sc.framework;
+
+import com.sparta.sc.PropertiesLoader;
 
 import java.io.IOException;
 import java.net.URI;
@@ -29,6 +31,21 @@ public class ConnectionManager {
 
     public static HttpResponse<String> getConnection(String lon, String lat) {
         url = BASEURL + "lon=" + lon + "&lat=" + lat + "&appid=" + key;
+        return getResponse();
+    }
+
+    public static HttpResponse<String> getConnection(int cityiD){
+        String iD = String.valueOf(cityiD);
+        url = BASEURL + "id=" + iD + "&appid=" + key;
+        return getResponse();
+    }
+
+    public static HttpResponse<String> getConnectionCNSCCC(String cityName, String stateCode, String countryCode){
+        url = BASEURL + "q=" + cityName + "," + stateCode + "," + countryCode + "&appid=" + key;
+        return getResponse();
+    }
+    public static HttpResponse<String> getConnection(int Zip, String CountryCode){
+        url = BASEURL + "zip=" + Zip + "," + CountryCode + "&appid=" + key;
         return getResponse();
     }
 

@@ -1,5 +1,6 @@
-package com.sparta.sc.dto;
+package com.sparta.sc.framework.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Sys{
@@ -19,6 +20,7 @@ public class Sys{
 	@JsonProperty("type")
 	private int type;
 
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@JsonProperty("message")
 	private double message;
 
