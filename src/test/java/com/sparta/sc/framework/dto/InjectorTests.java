@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import java.net.http.HttpResponse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class InjectorMTests {
+public class InjectorTests {
 
     private HttpResponse response;
     private WeatherDTO weatherDTO;
@@ -65,6 +65,21 @@ public class InjectorMTests {
         response = Mockito.mock((HttpResponse.class));
         Mockito.when(response.body()).thenReturn(bodyResponse);
         weatherDTO = Injector.injectDTO(response);
+    }
+
+    @Test
+    @DisplayName("Test WeatherDTO is not null")
+    void testWeatherDtoIsNotNull() {
+        Assertions.assertNotEquals(null, weatherDTO);
+        Mockito.verify(response, Mockito.times(1)).body();
+    }
+
+    @Test
+    @DisplayName("Test WeatherDTO returns correct coord")
+    void testWeatherDtoReturnsCorrectCoord() {
+        Assertions.assertEquals(139, weatherDTO.getCoord().getLon());
+        Assertions.assertEquals(35, weatherDTO.getCoord().getLat());
+        Mockito.verify(response, Mockito.times(1)).body();
     }
 
     @Test
