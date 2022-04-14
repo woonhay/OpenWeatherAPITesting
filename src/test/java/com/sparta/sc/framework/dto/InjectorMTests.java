@@ -157,4 +157,5 @@ public class InjectorMTests {
         Assertions.assertEquals(32400, weatherDTO.getTimezone());
         Mockito.verify(response, Mockito.times(1)).body();
     }
+
 }
